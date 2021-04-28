@@ -2,14 +2,30 @@
   <div>
     <q-img :src="car.image">
       <div class="absolute-bottom text-subtitle1 text-center">
-        {{ car.year }} Honda Civic Silver
+        "{{ car.name }}"
       </div>
     </q-img>
     <q-card class="my-card">
       <q-card-section>
         <div class="row">
+          <div class="col">Year:</div>
+          <div class="col">{{ car.year }}</div>
+        </div>
+        <div class="row">
+          <div class="col">Make:</div>
+          <div class="col">{{ car.make }}</div>
+        </div>
+        <div class="row">
+          <div class="col">Model:</div>
+          <div class="col">{{ car.model }}</div>
+        </div>
+        <div class="row">
+          <div class="col">Color:</div>
+          <div class="col">{{ car.color }}</div>
+        </div>
+        <div class="row">
           <div class="col">Mileage:</div>
-          <div class="col">35mpg</div>
+          <div class="col">{{ carMPG }} mpg</div>
         </div>
         <div class="row">
           <div class="col">License:</div>
@@ -41,8 +57,7 @@
 // import { defineComponent } from "@vue/composition-api";
 import TanksTable from "../components/TanksTable";
 import NewTankDialog from "../components/NewTankDialog";
-import { cars } from "../../dummyData";
-console.log("cars", cars);
+import { calcMPG } from "../../utilFunctions";
 
 export default {
   name: "CarPage",
@@ -53,9 +68,9 @@ export default {
   props: ["vin"],
   data() {
     return {
-      newTankPopup: false,
+      newTankPopup: false
       //   car: cars[0]
-      car: cars.filter(car => car.vin === this.vin)[0]
+      //   car: cars.filter(car => car.vin === this.vin)[0]
     };
   },
   methods: {
@@ -64,6 +79,25 @@ export default {
     },
     closeDialog() {
       this.newTankPopup = false;
+    }
+  },
+  computed: {
+    car: {
+      get() {
+        return this.$store.state.carstore.cars.filter(
+          car => car.vin === this.vin
+        )[0];
+      }
+    },
+    carMPG: {
+      get() {
+        let car = this.$store.state.carstore.cars.filter(
+          car => car.vin === this.vin
+        )[0];
+        return calcMPG(car.tanks);
+      }
+
+      // calcMPG(this.car.tanks)
     }
   }
 };

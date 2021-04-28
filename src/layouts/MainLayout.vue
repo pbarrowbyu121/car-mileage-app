@@ -11,9 +11,7 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
-        <q-toolbar-title>
-          Car Mileage App
-        </q-toolbar-title>
+        <q-toolbar-title> Car Mileage App </q-toolbar-title>
       </q-toolbar>
     </q-header>
 
@@ -60,6 +58,13 @@ export default {
       leftDrawerOpen: false,
       essentialLinks: linksData
     };
+  },
+  computed: {
+    username: {
+      get() {
+        return this.$store.state.carstore.username;
+      }
+    }
   }
 };
 </script>
