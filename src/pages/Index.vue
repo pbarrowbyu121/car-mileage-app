@@ -20,7 +20,7 @@
 <script>
 import CarCard from "../components/CarCard";
 import NewCarDialog from "../components/NewCarDialog";
-import { cars } from "../../dummyData";
+// import { cars } from "../../dummyData";
 export default {
   name: "PageIndex",
   components: {
@@ -29,13 +29,20 @@ export default {
   },
   data() {
     return {
-      cars: cars,
+      // cars: cars,
       addCarDialog: false
     };
   },
   methods: {
     addCarDialogToggle() {
       this.addCarDialog = true;
+    }
+  },
+  computed: {
+    cars: {
+      get() {
+        return this.$store.state.carstore.cars;
+      }
     }
   }
 };

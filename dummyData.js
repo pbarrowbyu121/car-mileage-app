@@ -37,14 +37,14 @@ export const cars = [
           ]
         },
         {
-            vin: "2HGFG1B86AH512987",
+            vin: "2ZZZZ1B86AH512987",
           
           make: "Honda",
           model: "Civic",
           license: "ABC DEF",
           color: "Silver",
           year: "2010",
-          name: "Silver",
+          name: "Max",
           image:
             "https://file.kelleybluebookimages.com/kbb/base/evox/StJ/6691/2010-Honda-Civic-front-angle1_6691_046_640x480.jpg",
           tanks: [
@@ -56,7 +56,7 @@ export const cars = [
             },
             {
               date: "12/12/2020",
-              odometer: 110300,
+              odometer: 10300,
               gallons: 12,
               cost: 35
             },
