@@ -10,8 +10,16 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
+        <q-btn
+          flat
+          dense
+          round
+          icon="warning"
+          aria-label="Click"
+          @click="changeName({ username: 'Brian' })"
+        />
 
-        <q-toolbar-title> Car Mileage App </q-toolbar-title>
+        <q-toolbar-title> Car Mileage App {{ username }}</q-toolbar-title>
       </q-toolbar>
     </q-header>
 
@@ -41,6 +49,7 @@
 
 <script>
 import MenuLink from "components/MenuLink.vue";
+import { mapActions } from "vuex";
 
 const linksData = [
   {
@@ -59,10 +68,16 @@ export default {
       essentialLinks: linksData
     };
   },
+  methods: {
+    ...mapActions("carstore", ["changeName", ""])
+  },
   computed: {
     username: {
       get() {
         return this.$store.state.carstore.username;
+      },
+      set(val) {
+        this.$store.state.commit("carstore/UPDATE_USERNAME_MUTATION", val);
       }
     }
   }

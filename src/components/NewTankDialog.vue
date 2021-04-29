@@ -54,7 +54,7 @@
         <q-input filled v-model="cost" label="Cost ($)" dense />
 
         <div>
-          <q-btn type="submit" color="primary">Add Tank</q-btn>
+          <q-btn v-close-popup type="submit" color="primary">Add Tank</q-btn>
           <q-btn
             label="Reset"
             type="reset"
@@ -75,6 +75,10 @@
 </template>
 
 <script>
+import { uid } from "quasar";
+import { mapActions } from "vuex";
+import axios from "axios";
+
 export default {
   name: "NewTankDialog",
   data() {
@@ -83,25 +87,31 @@ export default {
       odometer: null,
       gallons: null,
       cost: null,
-      addTankConfirmation: false
+      addTankConfirmation: false,
+      tanks: []
     };
   },
+  props: ["vin"],
   methods: {
-    onSubmit() {
+    ...mapActions("carstore", ["addTankAction"]),
+    async onSubmit() {
       let newTankObj = {
+        id: uid(),
+        vin: this.vin,
         date: this.addTankDate,
         odometer: this.odometer,
         gallons: this.gallons,
         cost: this.cost
       };
-      // This is where you'll need to plug into the db to submit tank
-      // this.orderHistory = [...this.orderHistory, newOrderObj];
       console.log("newTankObj", newTankObj);
+      const res = await fetch("http://localhost:5000/tanks", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(newTankObj)
+      });
       this.onReset();
-      this.$emit("close-dialog");
-      // this.addTankConfirmation = true;
-      //   this.addCashDialog = false;
-      // this.orderConfirmation = true;
     },
     onReset() {
       // resets the form, clears state

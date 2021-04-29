@@ -10,9 +10,8 @@
       {{ car.year }} {{ car.make }} {{ car.model }}
     </q-card-section>
     <q-card-section class="q-pt-none">
-      Mileage: 35mpg
+      Mileage: {{ carMPG }} mpg
     </q-card-section>
-    <q-card-section class="q-pt-none"> Mileage: {{ carMPG }} </q-card-section>
 
     <q-card-section class="q-pt-none">
       Total Miles: {{ miles }}
@@ -32,12 +31,31 @@ export default {
     }
   },
   computed: {
-    miles() {
-      return this.car.tanks[0].odometer;
+    // miles() {
+    //   return this.car.tanks[0].odometer;
+    // },
+    miles: {
+      get() {
+        let tanks = this.$store.state.carstore.tanks.filter(
+          tank => tank.vin === this.car.vin
+        );
+        return tanks[0].odometer;
+      }
     },
-    carMPG() {
-      return calcMPG(this.car.tanks);
+    carMPG: {
+      get() {
+        let tanks = this.$store.state.carstore.tanks.filter(
+          tank => tank.vin === this.car.vin
+        );
+        return calcMPG(tanks);
+      }
     }
+    // carMPG() {
+    //   console.log("computed here", this.$store.state.carstore.tanks);
+    //   return calcMPG(
+    //     this.$store.state.carstore.tanks.filter(tank => tank.vin === car.vin)
+    //   );
+    // }
   }
 };
 </script>

@@ -1,79 +1,106 @@
 {
-    "cars": [
-        {
-          "vin": "3ABCD1B86AH512987",
-          "make": "Subaru",
-          "model": "Legacy",
-          "license": "123 XYZ",
-          "color": "Green",
-          "year": "1991",
-          "name": "Green Goblin",
-          "image":
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrOqxeEh_oX_XFe-Axk7Q2ulPvrOBY0YFTYbcjNhsDCSQdB6sma5XARS33Dbx61UQKEyY&usqp=CAU",
-          "tanks": [
-            {
-              "date": "12/05/2020",
-              "odometer": 110000,
-              "gallons": 12,
-              "cost": 30
-            },
-            {
-              "date": "12/12/2020",
-              "odometer": 110300,
-              "gallons": 12,
-              "cost": 31
-            },
-            {
-              "date": "12/19/2020",
-              "odometer": 110600,
-              "gallons": 12,
-              "cost": 32
-            },
-            {
-              "date": "12/26/2020",
-              "odometer": 110900,
-              "gallons": 12,
-              "cost": 33
-            }
-          ]
-        },
-        {
-            "vin": "2HGFG1B86AH512987",
-          
-          "make": "Honda",
-          "model": "Civic",
-          "license": "ABC DEF",
-          "color": "Silver",
-          "year": "2010",
-          "name": "Silver",
-          "image":
-            "https://file.kelleybluebookimages.com/kbb/base/evox/StJ/6691/2010-Honda-Civic-front-angle1_6691_046_640x480.jpg",
-          "tanks": [
-            {
-              "date": "12/05/2020",
-              "odometer": 10000,
-              "gallons": 12,
-              "cost": 34
-            },
-            {
-              "date": "12/12/2020",
-              "odometer": 110300,
-              "gallons": 12,
-              "cost": 35
-            },
-            {
-              "date": "12/19/2020",
-              "odometer": 10600,
-              "gallons": 12,
-              "cost": 36
-            },
-            {
-              "date": "12/26/2020",
-              "odometer": 10900,
-              "gallons": 12,
-              "cost": 37
-            }
-          ]
-        }
-      ]
+  "cars": [
+    {
+      "vin": "3ABCD1B86AH512987",
+      "make": "Subaru",
+      "model": "Legacy",
+      "license": "123 XYZ",
+      "color": "Green",
+      "year": "1991",
+      "name": "Green Goblin",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrOqxeEh_oX_XFe-Axk7Q2ulPvrOBY0YFTYbcjNhsDCSQdB6sma5XARS33Dbx61UQKEyY&usqp=CAU"
+    },
+    {
+      "vin": "2HGFG1B86AH512987",
+      "make": "Honda",
+      "model": "Civic",
+      "license": "ABC DEF",
+      "color": "Silver",
+      "year": "2010",
+      "name": "Silver",
+      "image": "https://file.kelleybluebookimages.com/kbb/base/evox/StJ/6691/2010-Honda-Civic-front-angle1_6691_046_640x480.jpg"
+    }
+  ],
+  "tanks": [
+    {
+      "id": 1,
+      "vin": "3ABCD1B86AH512987",
+      "date": "12/05/2020",
+      "odometer": 110000,
+      "gallons": 12,
+      "cost": 30
+    },
+    {
+      "id": 2,
+      "vin": "3ABCD1B86AH512987",
+      "date": "12/12/2020",
+      "odometer": 110300,
+      "gallons": 12,
+      "cost": 31
+    },
+    {
+      "id": 3,
+      "vin": "3ABCD1B86AH512987",
+      "date": "12/19/2020",
+      "odometer": 110600,
+      "gallons": 12,
+      "cost": 32
+    },
+    {
+      "id": 4,
+      "vin": "3ABCD1B86AH512987",
+      "date": "12/26/2020",
+      "odometer": 110900,
+      "gallons": 12,
+      "cost": 33
+    },
+    {
+      "id": 5,
+      "vin": "2HGFG1B86AH512987",
+      "date": "12/05/2020",
+      "odometer": 10000,
+      "gallons": 12,
+      "cost": 34
+    },
+    {
+      "id": 6,
+      "vin": "2HGFG1B86AH512987",
+      "date": "12/12/2020",
+      "odometer": 110300,
+      "gallons": 12,
+      "cost": 35
+    },
+    {
+      "id": 7,
+      "vin": "2HGFG1B86AH512987",
+      "date": "12/19/2020",
+      "odometer": 10600,
+      "gallons": 12,
+      "cost": 36
+    },
+    {
+      "id": 8,
+      "vin": "2HGFG1B86AH512987",
+      "date": "12/26/2020",
+      "odometer": 10900,
+      "gallons": 12,
+      "cost": 37
+    },
+    {
+      "id": "3812f916-4063-497c-9fc4-0e24422700f5",
+      "vin": "1234ABC",
+      "date": "04/27/2021",
+      "odometer": "123",
+      "gallons": "34",
+      "cost": "45"
+    },
+    {
+      "id": "2ede16e9-3895-4066-b7bf-b92986317b91",
+      "vin": "2ZZZZ1B86AH512987",
+      "date": "04/27/2021",
+      "odometer": "123",
+      "gallons": "45",
+      "cost": "34"
+    }
+  ]
 }

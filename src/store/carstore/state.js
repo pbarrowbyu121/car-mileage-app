@@ -6,6 +6,7 @@ export default function () {
   return {
     //
     username: 'Peter',
-    cars: cars
+    cars: [],
+    tanks: [],
   }
 }

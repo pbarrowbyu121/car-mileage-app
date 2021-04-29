@@ -25,7 +25,7 @@
         </div>
         <div class="row">
           <div class="col">Mileage:</div>
-          <div class="col">{{ carMPG }} mpg</div>
+          <div class="col">12 mpg</div>
         </div>
         <div class="row">
           <div class="col">License:</div>
@@ -38,9 +38,7 @@
       </q-card-section>
     </q-card>
     <TanksTable :tanks="car.tanks" />
-    <q-dialog v-model="newTankPopup"
-      ><NewTankDialog @close-dialog="closeDialog"
-    /></q-dialog>
+    <q-dialog v-model="newTankPopup"><NewTankDialog :vin="car.vin"/></q-dialog>
     <div class="text-center q-my-md">
       <q-btn
         outline
@@ -76,9 +74,6 @@ export default {
   methods: {
     addTankDialogToggle() {
       this.newTankPopup = true;
-    },
-    closeDialog() {
-      this.newTankPopup = false;
     }
   },
   computed: {
@@ -91,13 +86,11 @@ export default {
     },
     carMPG: {
       get() {
-        let car = this.$store.state.carstore.cars.filter(
-          car => car.vin === this.vin
-        )[0];
-        return calcMPG(car.tanks);
+        let tanks = this.$store.state.carstore.tanks.filter(
+          tank => tank.vin === this.vin
+        );
+        return calcMPG(tanks);
       }
-
-      // calcMPG(this.car.tanks)
     }
   }
 };
