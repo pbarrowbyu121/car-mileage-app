@@ -23,7 +23,8 @@ export default {
           align: "center",
           label: "Odom",
           field: "odometer",
-          sortable: true
+          sortable: true,
+          format: val => val.toLocaleString()
         },
         { name: "gallons", label: "Gals", field: "gallons" },
         {
@@ -34,26 +35,6 @@ export default {
         }
       ],
       data: this.tanks
-      // data: [
-      //   {
-      //     date: "12/5/2020",
-      //     odometer: 30000,
-      //     gallons: 12,
-      //     cost: 30.0
-      //   },
-      //   {
-      //     date: "12/12/2020",
-      //     odometer: 30300,
-      //     gallons: 12,
-      //     cost: 30.0
-      //   },
-      //   {
-      //     date: "12/19/2020",
-      //     odometer: 30600,
-      //     gallons: 12,
-      //     cost: 30.0
-      //   }
-      // ]
     };
   }
 };

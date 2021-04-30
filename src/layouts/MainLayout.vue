@@ -6,7 +6,7 @@
           flat
           dense
           round
-          icon="menu"
+          icon="directions_car"
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
