@@ -2,13 +2,21 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
+        <!-- <q-btn
           flat
           dense
           round
           icon="directions_car"
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
+        /> -->
+        <q-btn
+          flat
+          dense
+          round
+          icon="directions_car"
+          aria-label="Home"
+          to="/"
         />
 
         <q-toolbar-title> Car Mileage App</q-toolbar-title>

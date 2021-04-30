@@ -55,7 +55,7 @@
 // import { defineComponent } from "@vue/composition-api";
 import TanksTable from "../components/TanksTable";
 import NewTankDialog from "../components/NewTankDialog";
-import { calcMPG } from "../../utilFunctions";
+import { calcMPG, sortTanks } from "../../utilFunctions";
 
 export default {
   name: "CarPage",
@@ -95,7 +95,9 @@ export default {
           tank => tank.vin === this.vin
         );
         if (tanks.length > 0) {
-          return tanks;
+          let sortedTanks = sortTanks(tanks, "desc");
+          console.log("sortedTanks for TABLE", sortedTanks);
+          return sortedTanks;
         } else {
           return null;
         }

@@ -24,7 +24,7 @@ export default {
           label: "Odom",
           field: "odometer",
           sortable: true,
-          format: val => val.toLocaleString()
+          format: val => parseInt(val).toLocaleString()
         },
         { name: "gallons", label: "Gals", field: "gallons" },
         {

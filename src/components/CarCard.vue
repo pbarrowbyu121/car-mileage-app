@@ -60,7 +60,8 @@ export default {
   },
   filters: {
     formatMiles(val) {
-      return val.toLocaleString();
+      let valInt = parseInt(val);
+      return valInt.toLocaleString();
     }
   }
 };
