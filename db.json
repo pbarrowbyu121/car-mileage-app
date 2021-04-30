@@ -88,7 +88,7 @@
       "id": 6,
       "vin": "2HGFG1B86AH512987",
       "date": "12/12/2020",
-      "odometer": 110300,
+      "odometer": 10300,
       "gallons": 12,
       "cost": 35
     },
@@ -139,6 +139,22 @@
       "odometer": "103000",
       "gallons": "11.56",
       "cost": "37.45"
+    },
+    {
+      "id": "9fe2bf84-9047-458b-90cf-3db49875cef2",
+      "vin": "987ZXY",
+      "date": "04/26/2021",
+      "odometer": "180000",
+      "gallons": "15",
+      "cost": "35"
+    },
+    {
+      "id": "0e7d8156-c97d-4d8d-b08a-f53a894079b2",
+      "vin": "987ZXY",
+      "date": "04/22/2021",
+      "odometer": "120000",
+      "gallons": "14",
+      "cost": "33"
     }
   ]
 }
