@@ -93,7 +93,7 @@ export default {
   },
   props: ["vin"],
   methods: {
-    ...mapActions("carstore", ["addTankAction"]),
+    // ...mapActions("carstore", ["addTankAction"]),
     async onSubmit() {
       let newTankObj = {
         id: uid(),
@@ -103,7 +103,7 @@ export default {
         gallons: this.gallons,
         cost: this.cost
       };
-      console.log("newTankObj", newTankObj);
+      // console.log("newTankObj", newTankObj);
       const res = await fetch("http://localhost:5000/tanks", {
         method: "POST",
         headers: {

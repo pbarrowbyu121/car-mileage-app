@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="car">
     <q-img :src="car.image">
       <div class="absolute-bottom text-subtitle1 text-center">
         "{{ car.name }}"
@@ -25,7 +25,7 @@
         </div>
         <div class="row">
           <div class="col">Mileage:</div>
-          <div class="col">12 mpg</div>
+          <div class="col">{{ carMPG }} mpg</div>
         </div>
         <div class="row">
           <div class="col">License:</div>
@@ -37,7 +37,7 @@
         </div>
       </q-card-section>
     </q-card>
-    <TanksTable :tanks="car.tanks" />
+    <TanksTable v-if="tanks && tanks.length > 0" :tanks="tanks" />
     <q-dialog v-model="newTankPopup"><NewTankDialog :vin="car.vin"/></q-dialog>
     <div class="text-center q-my-md">
       <q-btn
@@ -79,9 +79,26 @@ export default {
   computed: {
     car: {
       get() {
-        return this.$store.state.carstore.cars.filter(
+        let carArr = this.$store.state.carstore.cars.filter(
           car => car.vin === this.vin
-        )[0];
+        );
+        if (carArr.length > 0) {
+          return carArr[0];
+        } else {
+          return null;
+        }
+      }
+    },
+    tanks: {
+      get() {
+        let tanks = this.$store.state.carstore.tanks.filter(
+          tank => tank.vin === this.vin
+        );
+        if (tanks.length > 0) {
+          return tanks;
+        } else {
+          return null;
+        }
       }
     },
     carMPG: {
@@ -89,7 +106,11 @@ export default {
         let tanks = this.$store.state.carstore.tanks.filter(
           tank => tank.vin === this.vin
         );
-        return calcMPG(tanks);
+        if (tanks.length > 0) {
+          return calcMPG(tanks);
+        } else {
+          return null;
+        }
       }
     }
   }

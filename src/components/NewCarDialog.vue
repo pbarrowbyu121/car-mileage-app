@@ -26,6 +26,18 @@
         <!-- Color -->
         <q-input filled v-model="color" label="Color" dense />
 
+        <!-- VIN -->
+        <q-input filled v-model="vin" label="VIN" dense />
+
+        <!-- License -->
+        <q-input filled v-model="license" label="License Plate" dense />
+
+        <!-- Nickname -->
+        <q-input filled v-model="name" label="Nickname" dense />
+
+        <!-- Image address -->
+        <q-input filled v-model="image" label="Image address" dense />
+
         <div>
           <q-btn v-close-popup type="submit" color="primary">Add Car</q-btn>
           <q-btn
@@ -55,21 +67,36 @@ export default {
       year: null,
       make: null,
       model: null,
-      color: null
+      color: null,
+      vin: null,
+      license: null,
+      name: null,
+      image: null
       // addCarConfirmation: false
     };
   },
   methods: {
-    onSubmit() {
-      let newTankObj = {
+    async onSubmit() {
+      let newCarObj = {
+        id: this.vin,
         year: this.year,
         make: this.make,
         model: this.model,
-        color: this.color
+        color: this.color,
+        vin: this.vin,
+        license: this.license,
+        name: this.name,
+        image: this.image
       };
       // This is where you'll need to plug into the db to submit tank
       // this.orderHistory = [...this.orderHistory, newOrderObj];
-      console.log("newTankObj", newTankObj);
+      const res = await fetch("http://localhost:5000/cars", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(newCarObj)
+      });
       this.onReset();
     },
     onReset() {
@@ -78,6 +105,10 @@ export default {
       this.make = null;
       this.model = null;
       this.color = null;
+      this.vin = null;
+      this.license = null;
+      this.name = null;
+      this.image = null;
     }
   }
 };

@@ -19,6 +19,28 @@
       "year": "2010",
       "name": "Max",
       "image": "https://file.kelleybluebookimages.com/kbb/base/evox/StJ/6691/2010-Honda-Civic-front-angle1_6691_046_640x480.jpg"
+    },
+    {
+      "id": "123ABC456DEF",
+      "year": "2017",
+      "make": "Toyota",
+      "model": "Carolla",
+      "color": "White",
+      "vin": "123ABC456DEF",
+      "license": "ABC123",
+      "name": "Lil Nicky",
+      "image": "https://pickeringtoyota.com/usedinventoryimg/1572061181.jpg"
+    },
+    {
+      "id": "987ZXY",
+      "year": "1998",
+      "make": "Nissan",
+      "model": "Maxima",
+      "color": "Green",
+      "vin": "987ZXY",
+      "license": "BLAH1",
+      "name": "Liam",
+      "image": "https://i.pinimg.com/originals/5f/96/97/5f9697996bab65be07eb8d382fc9d0c7.png"
     }
   ],
   "tanks": [
@@ -101,6 +123,22 @@
       "odometer": "123",
       "gallons": "45",
       "cost": "34"
+    },
+    {
+      "id": "583ed3a6-f41e-44fb-9fe9-51b7ac1d823d",
+      "vin": "123ABC456DEF",
+      "date": "04/22/2021",
+      "odometer": "40000",
+      "gallons": "11.45",
+      "cost": "28.90"
+    },
+    {
+      "id": "d3a4ee38-8abd-4aaa-b0a3-b46257eea116",
+      "vin": "123ABC456DEF",
+      "date": "04/22/2021",
+      "odometer": "103000",
+      "gallons": "11.56",
+      "cost": "37.45"
     }
   ]
 }
