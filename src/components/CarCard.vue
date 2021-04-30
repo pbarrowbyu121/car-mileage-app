@@ -6,15 +6,18 @@
       </div>
     </q-img>
 
-    <q-card-section>
+    <q-card-section class="text-center">
       {{ car.year }} {{ car.make }} {{ car.model }}
     </q-card-section>
-    <q-card-section class="q-pt-none">
-      Mileage: {{ carMPG }} mpg
-    </q-card-section>
-
-    <q-card-section class="q-pt-none">
-      Total Miles: {{ miles }}
+    <q-card-section v-if="carMPG && miles" class="q-pt-none">
+      <div class="row">
+        <div class="col">Mileage:</div>
+        <div class="col">{{ carMPG }} mpg</div>
+      </div>
+      <div class="row">
+        <div class="col">Total Miles:</div>
+        <div class="col">{{ miles | formatMiles }}</div>
+      </div>
     </q-card-section>
   </q-card>
 </template>
@@ -26,20 +29,20 @@ export default {
   props: ["car"],
   methods: {
     goToCar(vin) {
-      // console.log("goTo", props.row.performance);
       this.$router.push({ path: `car/${vin}` });
     }
   },
   computed: {
-    // miles() {
-    //   return this.car.tanks[0].odometer;
-    // },
     miles: {
       get() {
         let tanks = this.$store.state.carstore.tanks.filter(
           tank => tank.vin === this.car.vin
         );
-        return tanks[0].odometer;
+        if (tanks.length > 0) {
+          console.log("miles type", typeof tanks[0].odometer);
+          return tanks[0].odometer;
+        }
+        return 0;
       }
     },
     carMPG: {
@@ -47,15 +50,18 @@ export default {
         let tanks = this.$store.state.carstore.tanks.filter(
           tank => tank.vin === this.car.vin
         );
-        return calcMPG(tanks);
+        if (tanks.length > 0) {
+          return calcMPG(tanks);
+        } else {
+          return null;
+        }
       }
     }
-    // carMPG() {
-    //   console.log("computed here", this.$store.state.carstore.tanks);
-    //   return calcMPG(
-    //     this.$store.state.carstore.tanks.filter(tank => tank.vin === car.vin)
-    //   );
-    // }
+  },
+  filters: {
+    formatMiles(val) {
+      return val.toLocaleString();
+    }
   }
 };
 </script>

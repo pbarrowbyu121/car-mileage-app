@@ -10,16 +10,8 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-        <q-btn
-          flat
-          dense
-          round
-          icon="warning"
-          aria-label="Click"
-          @click="changeName({ username: 'Brian' })"
-        />
 
-        <q-toolbar-title> Car Mileage App {{ username }}</q-toolbar-title>
+        <q-toolbar-title> Car Mileage App</q-toolbar-title>
       </q-toolbar>
     </q-header>
 
