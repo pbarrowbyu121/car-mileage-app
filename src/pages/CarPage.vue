@@ -48,6 +48,14 @@
         @click="addTankDialogToggle"
       />
     </div>
+    <div class="text-center q-my-md">
+      <q-btn
+        rounded
+        color="negative"
+        label="Delete Car"
+        @click="deleteCar"
+      />
+    </div>
   </div>
 </template>
 
@@ -56,6 +64,7 @@
 import TanksTable from "../components/TanksTable";
 import NewTankDialog from "../components/NewTankDialog";
 import { calcMPG, sortTanks } from "../../utilFunctions";
+import { mapActions } from "vuex";
 
 export default {
   name: "CarPage",
@@ -67,14 +76,53 @@ export default {
   data() {
     return {
       newTankPopup: false
-      //   car: cars[0]
-      //   car: cars.filter(car => car.vin === this.vin)[0]
     };
   },
   methods: {
+    ...mapActions("carstore", ["getTanksAction", "getCarsAction"]),
     addTankDialogToggle() {
       this.newTankPopup = true;
-    }
+    },
+    deleteCar() {
+      console.log("Delete car pressed")
+      fetch(`http://localhost:5000/cars/${this.vin}`, {
+        method: "DELETE"
+      })
+      .then((res) => console.log("DELETE request", res))
+      .then(() => {
+        this.fetchCars()
+      })
+      .then(() => {
+        this.$router.push({ path: `/` })
+      })
+    },
+    fetchCars() {
+      fetch("http://localhost:5000/cars", {
+        method: "GET"
+      })
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        // console.log("DATA", res)
+        this.getCarsAction(res)
+      })
+      .catch(e => {
+        console.log(e)
+      })
+    },
+    getCarImage() {
+      fetch("http://api.carmd.com/v3.0/image?vin=2HGFG1B86AH512987", {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          "authorization": "Basic MmM2M2Y4MzItODNlMC00NGE4LWFmZjItOGI2NGRhOTdkMzY3",
+          "partner-token": "214086a09d764e0eae3840202841c336"
+        }
+      })
+      .then(res => res.json())
+      .then(res => console.log(res))
+    },
   },
   computed: {
     car: {

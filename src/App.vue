@@ -42,7 +42,7 @@ export default {
   },
   async created() {
     this.fetchCars()
-    this.getTanksAction(tanks);
+    this.fetchTanks();
   }
 };
 </script>
