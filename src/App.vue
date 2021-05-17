@@ -10,22 +10,38 @@ export default {
   name: "App",
   methods: {
     ...mapActions("carstore", ["getTanksAction", "getCarsAction"]),
-    async fetchCars() {
-      const res = await fetch("http://localhost:5000/cars");
-      const data = await res.json();
-      return data;
+    fetchCars() {
+      fetch("http://localhost:5000/cars", {
+        method: "GET"
+      })
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        // console.log("DATA", res)
+        this.getCarsAction(res)
+      })
+      .catch(e => {
+        console.log(e)
+      })
     },
-    async fetchTanks() {
-      const res = await fetch("http://localhost:5000/tanks");
-      const data = await res.json();
-      return data;
+    fetchTanks() {
+      fetch("http://localhost:5000/tanks", {
+        method: "GET"
+      })
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        this.getTanksAction(res)
+      })
+      .catch(e => {
+        console.log(e)
+      })
     }
   },
   async created() {
-    let cars = await this.fetchCars();
-    this.getCarsAction(cars);
-
-    let tanks = await this.fetchTanks();
+    this.fetchCars()
     this.getTanksAction(tanks);
   }
 };

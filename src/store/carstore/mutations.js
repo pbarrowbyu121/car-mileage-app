@@ -8,7 +8,7 @@ export const UPDATE_USERNAME_MUTATION = (state, newUser) => {
 }
 
 export const GET_CARS_MUTATION = (state, cars) => {
-  // console.log("get cars mutation")
+  console.log("get cars mutation", cars)
   state.cars = cars
 }
 

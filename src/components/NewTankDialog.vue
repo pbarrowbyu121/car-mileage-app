@@ -94,7 +94,7 @@ export default {
   props: ["vin"],
   methods: {
     // ...mapActions("carstore", ["addTankAction"]),
-    async onSubmit() {
+    onSubmit() {
       let newTankObj = {
         id: uid(),
         vin: this.vin,
@@ -103,7 +103,10 @@ export default {
         gallons: this.gallons,
         cost: this.cost
       };
-      // console.log("newTankObj", newTankObj);
+      this.addTank(newTankObj)
+      this.onReset();
+    },
+    async addTank(newTankObj) {
       const res = await fetch("http://localhost:5000/tanks", {
         method: "POST",
         headers: {
@@ -111,7 +114,7 @@ export default {
         },
         body: JSON.stringify(newTankObj)
       });
-      this.onReset();
+      console.log("RESPONSE from POST", await res.json());
     },
     onReset() {
       // resets the form, clears state

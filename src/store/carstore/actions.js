@@ -11,9 +11,11 @@ export function addTankAction ({}, payload) {
 }
 
 export function getCarsAction ({ commit }, payload) {
+    console.log("getCarsAction called", payload)
     commit('GET_CARS_MUTATION', payload)
 }
 
 export function getTanksAction ({ commit }, payload) {
+    console.log("getTanksAction called")
     commit('GET_TANKS_MUTATION', payload)
 }

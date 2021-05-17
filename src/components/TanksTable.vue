@@ -1,6 +1,13 @@
 <template>
   <div class="q-mt-md">
-    <q-table title="Gas" :data="data" :columns="columns" row-key="name" />
+    <q-table title="Gas" :data="data" :columns="columns" row-key="name">
+      <template v-slot:body-cell-actions="props">
+        <q-td :props="props">
+          <q-btn dense round flat color="grey" icon="edit"/>
+          <q-btn dense round flat color="grey" @click="deleteTank(props.row.id)" icon="delete"/>
+        </q-td>
+      </template>
+    </q-table>
   </div>
 </template>
 
@@ -32,10 +39,24 @@ export default {
           label: "Cost",
           field: "cost",
           format: val => `${val}`
+        },
+        {
+          name: "actions", label: "Actions", field: '', align: 'center'
         }
       ],
       data: this.tanks
     };
+  },
+  methods: {
+    async deleteTank(id) {
+      console.log("DELETE TANK called", id)
+      const res = await fetch(`http://localhost:5000/tanks/${id}`, {
+        method: "DELETE",
+      })
+      .then((res) => {
+        console.log("delete res", res)
+      });
+    }
   }
 };
 </script>
