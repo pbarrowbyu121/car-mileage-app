@@ -18,6 +18,7 @@
 <script>
 import CarCard from "../components/CarCard";
 import NewCarDialog from "../components/NewCarDialog";
+import { mapActions } from "vuex"
 
 export default {
   name: "PageIndex",
@@ -31,8 +32,37 @@ export default {
     };
   },
   methods: {
+    ...mapActions("carstore", ["getTanksAction", "getCarsAction"]),
     addCarDialogToggle() {
       this.addCarDialog = true;
+    },
+    fetchCars() {
+      fetch("http://localhost:5000/cars", {
+        method: "GET"
+      })
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        this.getCarsAction(res)
+      })
+      .catch(e => {
+        console.log(e)
+      })
+    },
+    fetchTanks() {
+      fetch("http://localhost:5000/tanks", {
+        method: "GET"
+      })
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        this.getTanksAction(res)
+      })
+      .catch(e => {
+        console.log(e)
+      })
     }
   },
   computed: {
@@ -41,6 +71,10 @@ export default {
         return this.$store.state.carstore.cars;
       }
     }
+  },
+  async created() {
+    this.fetchCars()
+    this.fetchTanks();
   }
 };
 </script>

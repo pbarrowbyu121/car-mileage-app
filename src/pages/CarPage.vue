@@ -79,40 +79,28 @@ export default {
     };
   },
   methods: {
-    ...mapActions("carstore", ["getTanksAction", "getCarsAction"]),
     addTankDialogToggle() {
       this.newTankPopup = true;
     },
     deleteCar() {
+      if(this.tanks) {
+        let deleteTanksArr = this.tanks.map(tank => tank.id)
+        deleteTanksArr.forEach(id => this.deleteTankAPI(id))
+      }
+      this.deleteCarAPI()
+    },
+    deleteCarAPI() {
       console.log("Delete car pressed")
       fetch(`http://localhost:5000/cars/${this.vin}`, {
         method: "DELETE"
       })
       .then((res) => console.log("DELETE request", res))
       .then(() => {
-        this.fetchCars()
-      })
-      .then(() => {
         this.$router.push({ path: `/` })
       })
     },
-    fetchCars() {
-      fetch("http://localhost:5000/cars", {
-        method: "GET"
-      })
-      .then((res) => {
-        return res.json()
-      })
-      .then((res) => {
-        // console.log("DATA", res)
-        this.getCarsAction(res)
-      })
-      .catch(e => {
-        console.log(e)
-      })
-    },
     getCarImage() {
-      fetch("http://api.carmd.com/v3.0/image?vin=2HGFG1B86AH512987", {
+      fetch(`http://api.carmd.com/v3.0/image?vin=${this.vin}`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -123,6 +111,15 @@ export default {
       .then(res => res.json())
       .then(res => console.log(res))
     },
+    deleteTankAPI(id) {
+      console.log("DELETE TANK called", id)
+      fetch(`http://localhost:5000/tanks/${id}`, {
+        method: "DELETE",
+      })
+      .then((res) => {
+        console.log("delete res", res)
+      });
+    }
   },
   computed: {
     car: {

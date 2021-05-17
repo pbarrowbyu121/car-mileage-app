@@ -86,8 +86,6 @@ export default {
         name: this.name,
         image: this.image
       };
-      // This is where you'll need to plug into the db to submit tank
-      // this.orderHistory = [...this.orderHistory, newOrderObj];
       const res = await fetch("http://localhost:5000/cars", {
         method: "POST",
         headers: {
