@@ -10,139 +10,16 @@
       "year": "1991",
       "name": "Green Goblin",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrOqxeEh_oX_XFe-Axk7Q2ulPvrOBY0YFTYbcjNhsDCSQdB6sma5XARS33Dbx61UQKEyY&usqp=CAU"
-    },
-    {
-      "id": "2HGFG1B86AH512987",
-      "vin": "2HGFG1B86AH512987",
-      "make": "Honda",
-      "model": "Civic",
-      "license": "ABC DEF",
-      "color": "Silver",
-      "year": "2010",
-      "name": "Max",
-      "image": "https://file.kelleybluebookimages.com/kbb/base/evox/StJ/6691/2010-Honda-Civic-front-angle1_6691_046_640x480.jpg"
     }
   ],
   "tanks": [
     {
-      "id": 1,
+      "id": "ff8b4121-7961-4f7c-9976-80d5aac5682b",
       "vin": "3ABCD1B86AH512987",
-      "date": "12/05/2020",
-      "odometer": 110000,
-      "gallons": 12,
-      "cost": 30
-    },
-    {
-      "id": 2,
-      "vin": "3ABCD1B86AH512987",
-      "date": "12/12/2020",
-      "odometer": 110300,
-      "gallons": 12,
-      "cost": 31
-    },
-    {
-      "id": 3,
-      "vin": "3ABCD1B86AH512987",
-      "date": "12/19/2020",
-      "odometer": 110600,
-      "gallons": 12,
-      "cost": 32
-    },
-    {
-      "id": 4,
-      "vin": "3ABCD1B86AH512987",
-      "date": "12/26/2020",
-      "odometer": 110900,
-      "gallons": 12,
-      "cost": 33
-    },
-    {
-      "id": 5,
-      "vin": "2HGFG1B86AH512987",
-      "date": "12/05/2020",
-      "odometer": 10000,
-      "gallons": 12,
-      "cost": 34
-    },
-    {
-      "id": 6,
-      "vin": "2HGFG1B86AH512987",
-      "date": "12/12/2020",
-      "odometer": 10300,
-      "gallons": 12,
-      "cost": 35
-    },
-    {
-      "id": 7,
-      "vin": "2HGFG1B86AH512987",
-      "date": "12/19/2020",
-      "odometer": 10600,
-      "gallons": 12,
-      "cost": 36
-    },
-    {
-      "id": 8,
-      "vin": "2HGFG1B86AH512987",
-      "date": "12/26/2020",
-      "odometer": 10900,
-      "gallons": 12,
-      "cost": 37
-    },
-    {
-      "id": "3812f916-4063-497c-9fc4-0e24422700f5",
-      "vin": "1234ABC",
-      "date": "04/27/2021",
-      "odometer": "123",
-      "gallons": "34",
-      "cost": "45"
-    },
-    {
-      "id": "2ede16e9-3895-4066-b7bf-b92986317b91",
-      "vin": "2ZZZZ1B86AH512987",
-      "date": "04/27/2021",
-      "odometer": "123",
-      "gallons": "45",
+      "date": "05/18/2021",
+      "odometer": "111000",
+      "gallons": "23",
       "cost": "34"
-    },
-    {
-      "id": "a3000dae-204a-4e52-8a35-77427cfd3b38",
-      "vin": "3ABCD1B86AH512987",
-      "date": "04/30/2021",
-      "odometer": "120000",
-      "gallons": "15",
-      "cost": "35"
-    },
-    {
-      "id": "ef41f66c-7f7b-4b4f-903a-110e9bdee7c6",
-      "vin": "2HGFG1B86AH512987",
-      "date": "04/30/2021",
-      "odometer": "11000",
-      "gallons": "30",
-      "cost": "11.57"
-    },
-    {
-      "id": "15ffeb60-8d99-4e8d-94fe-602c93a5fb05",
-      "vin": "2HGFG1B86AH512987",
-      "date": "04/30/2021",
-      "odometer": "11100",
-      "gallons": "10",
-      "cost": "34"
-    },
-    {
-      "id": "30de603d-7255-4498-9bdc-b32889e6aef4",
-      "vin": "2HGFG1B86AH512987",
-      "date": "04/30/2021",
-      "odometer": "11200",
-      "gallons": "10.01",
-      "cost": "25.67"
-    },
-    {
-      "id": "a168be69-ba1d-42a3-8b9e-60d5c4be3f33",
-      "vin": "2HGFG1B86AH512987",
-      "date": "04/30/2021",
-      "odometer": "11300",
-      "gallons": "10.02",
-      "cost": "9.75"
     }
   ]
 }

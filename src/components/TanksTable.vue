@@ -1,6 +1,6 @@
 <template>
   <div class="q-mt-md">
-    <q-table title="Gas" :data="data" :columns="columns" row-key="name">
+    <q-table title="Gas" :data="tanks" :columns="columns" row-key="name">
       <template v-slot:body-cell-actions="props">
         <q-td :props="props">
           <q-btn dense round flat color="grey" icon="edit"/>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+
 export default {
   name: "TanksTable",
   props: ["tanks"],
@@ -44,7 +45,7 @@ export default {
           name: "actions", label: "Actions", field: '', align: 'center'
         }
       ],
-      data: this.tanks
+      // data: this.tanks
     };
   },
   methods: {
@@ -55,8 +56,11 @@ export default {
       })
       .then((res) => {
         console.log("delete res", res)
+        if(res.status === 200) {
+          this.$emit('deleteTank', id)
+        }
       });
-    }
+    },
   }
 };
 </script>

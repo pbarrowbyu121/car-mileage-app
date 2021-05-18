@@ -37,8 +37,8 @@
         </div>
       </q-card-section>
     </q-card>
-    <TanksTable v-if="tanks && tanks.length > 0" :tanks="tanks" />
-    <q-dialog v-model="newTankPopup"><NewTankDialog :vin="car.vin"/></q-dialog>
+    <TanksTable v-if="tanks && tanks.length > 0" :tanks="tanks" @deleteTank="deleteTank"/>
+    <q-dialog v-model="newTankPopup"><NewTankDialog :vin="car.vin" /></q-dialog>
     <div class="text-center q-my-md">
       <q-btn
         outline
@@ -79,6 +79,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions("carstore", ["getCarsAction", "getTanksAction"]),
     addTankDialogToggle() {
       this.newTankPopup = true;
     },
@@ -96,6 +97,7 @@ export default {
       })
       .then((res) => console.log("DELETE request", res))
       .then(() => {
+        this.fetchCars()
         this.$router.push({ path: `/` })
       })
     },
@@ -119,45 +121,75 @@ export default {
       .then((res) => {
         console.log("delete res", res)
       });
-    }
+    },
+    deleteTank(id) {
+      this.fetchTanks()
+    },
+    fetchCars() {
+      console.log("fetchCars called")
+      fetch("http://localhost:5000/cars", {
+        method: "GET"
+      })
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        console.log("response", res)
+        this.getCarsAction(res)
+      })
+      .catch(e => {
+        console.log(e)
+      })
+    },
+    fetchTanks() {
+      fetch("http://localhost:5000/tanks", {
+        method: "GET"
+      })
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        this.getTanksAction(res)
+      })
+      .catch(e => {
+        console.log(e)
+      })
+    },
   },
   computed: {
-    car: {
-      get() {
-        let carArr = this.$store.state.carstore.cars.filter(
-          car => car.vin === this.vin
-        );
-        if (carArr.length > 0) {
-          return carArr[0];
-        } else {
-          return null;
-        }
-      }
+    car() {
+      return this.$store.state.carstore.cars.filter(
+        car => car.vin === this.vin
+      )[0]
+      // let carArr = this.$store.state.carstore.cars.filter(
+      //   car => car.vin === this.vin
+      // );
+      // if (carArr.length > 0) {
+      //   return carArr[0];
+      // } else {
+      //   return null
+      // }
     },
-    tanks: {
-      get() {
-        let tanks = this.$store.state.carstore.tanks.filter(
-          tank => tank.vin === this.vin
-        );
-        if (tanks.length > 0) {
-          let sortedTanks = sortTanks(tanks, "desc");
-          console.log("sortedTanks for TABLE", sortedTanks);
-          return sortedTanks;
-        } else {
-          return null;
-        }
-      }
+    tanks() {
+      return sortTanks(this.$store.state.carstore.tanks.filter(tank => tank.vin === this.vin), "desc")
+      // let tanks = this.$store.state.carstore.tanks.filter(
+      //   tank => tank.vin === this.vin
+      // );
+      // if (tanks.length > 0) {
+      //   let sortedTanks = sortTanks(tanks, "desc");
+      //   return sortedTanks;
+      // } else {
+      //   return null
+      // }
     },
-    carMPG: {
-      get() {
-        let tanks = this.$store.state.carstore.tanks.filter(
-          tank => tank.vin === this.vin
-        );
-        if (tanks.length > 0) {
-          return calcMPG(tanks);
-        } else {
-          return null;
-        }
+    carMPG() {
+      let tanks = this.$store.state.carstore.tanks.filter(
+        tank => tank.vin === this.vin
+      );
+      if (tanks.length > 0) {
+        return calcMPG(tanks);
+      } else {
+        return null;
       }
     }
   }

@@ -10,23 +10,37 @@
         <!-- Year -->
         <q-select filled dense clearable v-model="year" :options="yearOptions" @input="getCarMakes" label="Year" />
         <!-- Make -->
-        <!-- <q-select v-if="year" filled dense clearable v-model="make" :options="makeOptions" @input="getCarModels" label="Make" /> -->
         <q-select
+          v-if="year"
+          dense
           filled
           v-model="make"
           use-input
           input-debounce="0"
           label="Make"
           :options="makeOptions"
-          @filter="filterFn"
+          @filter="filterFnMakes"
           style="width: 250px"
+          @input="getCarModels"
           >
 
       </q-select>
 
         <!-- Model -->
-        <!-- <q-input filled v-model="model" label="Model" dense /> -->
-        <q-select v-if="make" filled dense clearable v-model="model" :options="modelOptions" label="Model" />
+        <q-select
+          v-if="make"
+          dense
+          filled
+          v-model="model"
+          use-input
+          input-debounce="0"
+          label="Model"
+          :options="modelOptions"
+          @filter="filterFnModels"
+          style="width: 250px"
+          >
+
+      </q-select>
 
         <!-- Color -->
         <q-input filled v-model="color" label="Color" dense />
@@ -65,8 +79,10 @@
 </template>
 
 <script>
+import { mapActions } from "vuex"
+
 export default {
-  name: "NewTankDialog",
+  name: "NewCarDialog",
   data() {
     return {
       year: null,
@@ -83,11 +99,13 @@ export default {
       makeOptions: [],
       makeOptionsAll:[],
       modelOptions: [],
+      modelOptionsAll: [],
       // addCarConfirmation: false
     };
   },
   methods: {
-    filterFn (val, update) {
+    ...mapActions("carstore", ["getCarsAction"]),
+    filterFnMakes (val, update) {
       if (val === '') {
         update(() => {
           this.makeOptions = this.makeOptionsAll
@@ -104,7 +122,24 @@ export default {
         this.makeOptions = this.makeOptionsAll.filter(v => v.toLowerCase().indexOf(needle) > -1)
       })
     },
-    async onSubmit() {
+    filterFnModels (val, update) {
+      if (val === '') {
+        update(() => {
+          this.modelOptions = this.modelOptionsAll
+
+          // with Quasar v1.7.4+
+          // here you have access to "ref" which
+          // is the Vue reference of the QSelect
+        })
+        return
+      }
+
+      update(() => {
+        const needle = val.toLowerCase()
+        this.modelOptions = this.modelOptionsAll.filter(v => v.toLowerCase().indexOf(needle) > -1)
+      })
+    },
+    onSubmit() {
       let newCarObj = {
         id: this.vin,
         year: this.year,
@@ -116,12 +151,15 @@ export default {
         name: this.name,
         image: this.image
       };
-      const res = await fetch("http://localhost:5000/cars", {
+      const res = fetch("http://localhost:5000/cars", {
         method: "POST",
         headers: {
           "Content-type": "application/json"
         },
         body: JSON.stringify(newCarObj)
+      })
+      .then(() => {
+        this.fetchCars()
       });
       this.onReset();
     },
@@ -137,7 +175,7 @@ export default {
       this.image = null;
     },
     getCarMakes() {
-      console.log("getCarMakes called")
+      // console.log("getCarMakes called")
       fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`, {
         method: "GET",
       })
@@ -150,17 +188,31 @@ export default {
       })
     },
     getCarModels() {
-      console.log("getCarMakes called")
-      fetch(`http://api.carmd.com/v3.0/model?year=${this.year}&make=${this.make}`, {
+      // console.log("getCarMakes called")
+      fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${this.make.toLowerCase()}?format=json`, {
         method: "GET",
-        headers: {
-          "content-type": "application/json",
-          "authorization": "Basic MmM2M2Y4MzItODNlMC00NGE4LWFmZjItOGI2NGRhOTdkMzY3",
-          "partner-token": "214086a09d764e0eae3840202841c336"
-        }
       })
-      .then(res => res.json())
-      .then(res => this.modelOptions = res.data)
+      .then(res => {
+        // console.log("response models", res)
+        return res.json()
+      })
+      .then(res => {
+        this.modelOptionsAll = res.Results.map(result => result.Model_Name).sort()
+      })
+    },
+    fetchCars() {
+      fetch("http://localhost:5000/cars", {
+        method: "GET"
+      })
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        this.getCarsAction(res)
+      })
+      .catch(e => {
+        console.log(e)
+      })
     },
   },
 };
