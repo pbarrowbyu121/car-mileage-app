@@ -4,7 +4,7 @@
       <template v-slot:body-cell-actions="props">
         <q-td :props="props">
           <q-btn dense round flat color="grey" icon="edit"/>
-          <q-btn dense round flat color="grey" @click="deleteTank(props.row.id)" icon="delete"/>
+          <q-btn dense round flat color="grey" @click="onDelete(props.row.id)" icon="delete"/>
         </q-td>
       </template>
     </q-table>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex"
 
 export default {
   name: "TanksTable",
@@ -49,18 +50,11 @@ export default {
     };
   },
   methods: {
-    async deleteTank(id) {
-      // console.log("DELETE TANK called", id)
-      const res = await fetch(`http://localhost:5000/tanks/${id}`, {
-        method: "DELETE",
-      })
-      .then((res) => {
-        console.log("delete res", res)
-        if(res.status === 200) {
-          this.$emit('updateTanks')
-        }
-      });
-    },
+    ...mapActions("carstore", ["deleteTankAction", "getTanksAction"]),
+    async onDelete(id) {
+      await this.deleteTankAction(id)
+      this.getTanksAction()
+    }
   }
 };
 </script>
