@@ -159,11 +159,8 @@ export default {
         },
         body: JSON.stringify(newCarObj)
       })
-      .then((res) => {
-        if(res.status === 201) {
-          console.log("successful add, emit updateCars", res)
-          this.fetchCars()
-        }
+      .then(() => {
+        this.getCarsAction()
       });
       this.onReset();
     },
@@ -202,20 +199,6 @@ export default {
       })
       .then(res => {
         this.modelOptionsAll = res.Results.map(result => result.Model_Name).sort()
-      })
-    },
-    fetchCars() {
-      fetch("http://localhost:5000/cars", {
-        method: "GET"
-      })
-      .then((res) => {
-        return res.json()
-      })
-      .then((res) => {
-        this.getCarsAction(res)
-      })
-      .catch(e => {
-        console.log(e)
       })
     },
   },
