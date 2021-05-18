@@ -93,20 +93,6 @@ export default {
   props: ["vin"],
   methods: {
     ...mapActions("carstore", ["getTanksAction"]),
-    fetchTanks() {
-      fetch("http://localhost:5000/tanks", {
-        method: "GET"
-      })
-      .then((res) => {
-        return res.json()
-      })
-      .then((res) => {
-        this.getTanksAction(res)
-      })
-      .catch(e => {
-        console.log(e)
-      })
-    },
     onSubmit() {
       let newTankObj = {
         id: uid(),
@@ -129,7 +115,7 @@ export default {
       })
       .then(() => {
         console.log("tank added 123")
-        this.fetchTanks()
+        this.getTanksAction()
       });
       // console.log("RESPONSE from POST", await res.json());
     },
