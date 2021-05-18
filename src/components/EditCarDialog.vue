@@ -1,7 +1,7 @@
 <template>
   <q-card class="my-card text-permanent-marker">
     <q-card-section>
-      <div class="text-h6">Add New Car</div>
+      <div class="text-h6">Edit Car</div>
     </q-card-section>
 
     <q-card-section class="q-pt-none">
@@ -57,7 +57,7 @@
         <q-input filled v-model="image" label="Image address" dense />
 
         <div>
-          <q-btn v-close-popup type="submit" color="primary">Add Car</q-btn>
+          <q-btn v-close-popup type="submit" color="primary">Save</q-btn>
           <q-btn
             label="Reset"
             type="reset"
@@ -82,17 +82,18 @@ import { mapActions } from "vuex"
 import { uid } from "quasar";
 
 export default {
-  name: "NewCarDialog",
+  name: "EditCarDialog",
+  props: ["car"],
   data() {
     return {
-      year: null,
-      make: null,
-      model: null,
-      color: null,
-      vin: null,
-      license: null,
-      name: null,
-      image: null,
+      year: this.car.year,
+      make: this.car.make,
+      model: this.car.model,
+      color: this.car.color,
+      vin: this.car.vin,
+      license: this.car.license,
+      name: this.car.name,
+      image: this.car.image,
       yearOptions: [
         1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021
       ],
@@ -100,19 +101,14 @@ export default {
       makeOptionsAll:[],
       modelOptions: [],
       modelOptionsAll: [],
-      // addCarConfirmation: false
     };
   },
   methods: {
-    ...mapActions("carstore", ["getCarsAction", "addCarAction"]),
+    ...mapActions("carstore", ["getCarsAction", "addCarAction", "editCarAction"]),
     filterFnMakes (val, update) {
       if (val === '') {
         update(() => {
           this.makeOptions = this.makeOptionsAll
-
-          // with Quasar v1.7.4+
-          // here you have access to "ref" which
-          // is the Vue reference of the QSelect
         })
         return
       }
@@ -126,10 +122,6 @@ export default {
       if (val === '') {
         update(() => {
           this.modelOptions = this.modelOptionsAll
-
-          // with Quasar v1.7.4+
-          // here you have access to "ref" which
-          // is the Vue reference of the QSelect
         })
         return
       }
@@ -140,8 +132,8 @@ export default {
       })
     },
     async onSubmit() {
-      let newCarObj = {
-        id: uid(),
+      let editedCarObj = {
+        ...this.car,
         year: this.year,
         make: this.make,
         model: this.model,
@@ -151,7 +143,7 @@ export default {
         name: this.name,
         image: this.image
       };
-      await this.addCarAction(newCarObj)
+      await this.editCarAction(editedCarObj)
       this.getCarsAction()
     },
     onReset() {
@@ -192,6 +184,10 @@ export default {
       })
     },
   },
+  created() {
+    this.getCarMakes()
+    this.getCarModels()
+  }
 };
 </script>
 

@@ -2,7 +2,7 @@
   "cars": [
     {
       "id": "1A2B3C",
-      "year": 1996,
+      "year": 2000,
       "make": "SUBARU",
       "model": "Legacy",
       "color": "Green",
@@ -14,20 +14,12 @@
   ],
   "tanks": [
     {
-      "id": "3991d302-464f-4c94-b593-b7781856d289",
+      "id": "423c1d5a-98c2-4f08-af36-98e56ffd2125",
       "vin": "1A2B3C",
-      "date": "05/04/2021",
-      "odometer": "34",
-      "gallons": "456",
-      "cost": "45"
-    },
-    {
-      "id": "100705e9-5277-4596-ab83-79340ace45f2",
-      "vin": "1A2B3C",
-      "date": "05/12/2021",
-      "odometer": "45",
-      "gallons": "56",
-      "cost": "45"
+      "date": "05/03/2021",
+      "odometer": "122",
+      "gallons": "122",
+      "cost": "122"
     }
   ]
 }

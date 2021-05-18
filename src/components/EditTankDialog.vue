@@ -1,17 +1,17 @@
 <template>
   <q-card class="my-card text-permanent-marker">
     <q-card-section>
-      <div class="text-h6">Fillup for 2010 Honda Civic Silver"</div>
+      <div class="text-h6">Edit {{tank.date}} Tank</div>
     </q-card-section>
 
     <q-card-section class="q-pt-none">
-      <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+      <q-form @submit="onSubmit" class="q-gutter-md">
         <!-- Date -->
         <q-input
           dense
           filled
           label="Date"
-          v-model="addTankDate"
+          v-model="editTankDate"
           class="q-pb-none"
         >
           <template v-slot:append>
@@ -22,7 +22,7 @@
                 transition-hide="scale"
               >
                 <q-date
-                  v-model="addTankDate"
+                  v-model="editTankDate"
                   minimal
                   today-btn
                   mask="MM/DD/YYYY"
@@ -39,7 +39,7 @@
         <!-- Odometer -->
         <q-input
           filled
-          v-model="odometer"
+          v-model="editTankOdometer"
           label="Odometer"
           dense
           :rules="[
@@ -47,23 +47,16 @@
           ]"
         />
         <!-- Gallons -->
-        <q-input filled v-model="gallons" label="Gallons" dense />
+        <q-input filled v-model="editTankGallons" label="Gallons" dense />
 
         <!-- Gallons -->
-        <q-input filled v-model="cost" label="Cost ($)" dense />
+        <q-input filled v-model="editTankCost" label="Cost ($)" dense />
 
         <div>
-          <q-btn v-close-popup type="submit" color="primary">Add Tank</q-btn>
-          <q-btn
-            label="Reset"
-            type="reset"
-            color="primary"
-            flat
-            class="q-ml-sm"
-          />
+          <q-btn v-close-popup type="submit" color="primary">Save</q-btn>
         </div>
       </q-form>
-    </q-card-section>
+    </q-card-section> 
 
     <!-- <q-separator /> -->
 
@@ -79,37 +72,28 @@ import { mapActions } from "vuex";
 import axios from "axios";
 
 export default {
-  name: "NewTankDialog",
+  name: "EditTankDialog",
+  props: ["tank"],
   data() {
     return {
-      addTankDate: null,
-      odometer: null,
-      gallons: null,
-      cost: null,
-      addTankConfirmation: false,
-    };
+      editTankCost: this.tank.cost,
+      editTankDate: this.tank.date,
+      editTankGallons: this.tank.gallons,
+      editTankOdometer: this.tank.odometer,
+    }
   },
-  props: ["vin"],
   methods: {
-    ...mapActions("carstore", ["getTanksAction", "addTankAction"]),
+    ...mapActions("carstore", ["getTanksAction", "editTankAction"]),
     async onSubmit() {
-      let newTankObj = {
-        id: uid(),
-        vin: this.vin,
-        date: this.addTankDate,
-        odometer: this.odometer,
-        gallons: this.gallons,
-        cost: this.cost
-      };
-      await this.addTankAction(newTankObj)
+      let editedTankObj = {
+        ...this.tank,
+        cost: this.editTankCost,
+        date: this.editTankDate,
+        gallons: this.editTankGallons,
+        odometer: this.editTankOdometer
+      }
+      await this.editTankAction(editedTankObj)
       this.getTanksAction()
-    },
-    onReset() {
-      // resets the form, clears state
-      this.addTankDate = null;
-      this.odometer = null;
-      this.gallons = null;
-      this.cost = null;
     }
   }
 };

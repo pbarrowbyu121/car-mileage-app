@@ -4,8 +4,40 @@ export function someAction (context) {
 */
 export function changeName ({}, payload) {
     // console.log("Action called", payload)
-    console.log("action called here", payload)
 }
+
+export function editCarAction({}, payload) {
+  fetch(`http://localhost:5000/cars/${payload.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(payload)
+  })
+  .then((res) => {
+    return res.json()
+  })
+  .then((res) => {
+    console.log("response from PUT request", res)
+  });
+}
+
+export function editTankAction({}, payload) {
+  fetch(`http://localhost:5000/tanks/${payload.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(payload)
+  })
+  .then((res) => {
+    return res.json()
+  })
+  .then((res) => {
+    console.log("response from PUT request", res)
+  });
+}
+
 export function deleteCarAction({}, payload) {
   fetch(`http://localhost:5000/cars/${payload}`, {
     method: "DELETE"
@@ -49,7 +81,6 @@ export function addTankAction ({}, payload) {
 }
 
 export function getCarsAction ({ commit }) {
-    console.log("getCarsAction called from actions")
     fetch("http://localhost:5000/cars", {
       method: "GET"
     })
@@ -66,7 +97,6 @@ export function getCarsAction ({ commit }) {
 }
 
 export function getTanksAction ({ commit }) {
-    console.log("getTanksAction called from actions")
     fetch("http://localhost:5000/tanks", {
         method: "GET"
       })

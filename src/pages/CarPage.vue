@@ -36,6 +36,7 @@
           <div class="col">{{ car.vin }}</div>
         </div>
       </q-card-section>
+      <q-btn dense round flat color="grey" @click="editCar" icon="edit"/>
     </q-card>
     <TanksTable v-if="tanks && tanks.length > 0" :tanks="tanks" />
     <q-dialog v-model="newTankPopup"><NewTankDialog :vin="car.vin" /></q-dialog>
@@ -56,6 +57,7 @@
         @click="deleteCar"
       />
     </div>
+    <q-dialog v-model="editCarPopup"><EditCarDialog :car="car"/></q-dialog>
   </div>
 </template>
 
@@ -63,6 +65,7 @@
 // import { defineComponent } from "@vue/composition-api";
 import TanksTable from "../components/TanksTable";
 import NewTankDialog from "../components/NewTankDialog";
+import EditCarDialog from "../components/EditCarDialog";
 import { calcMPG, sortTanks } from "../../utilFunctions";
 import { mapActions } from "vuex";
 
@@ -70,12 +73,14 @@ export default {
   name: "CarPage",
   components: {
     TanksTable,
-    NewTankDialog
+    NewTankDialog,
+    EditCarDialog
   },
   props: ["vin"],
   data() {
     return {
-      newTankPopup: false
+      newTankPopup: false,
+      editCarPopup: false
     };
   },
   methods: {
@@ -92,6 +97,10 @@ export default {
       await this.getCarsAction()
       this.$router.push({ path: '/' })
     },
+    editCar() {
+      console.log("editCar pressed")
+      this.editCarPopup = true
+    }
   },
   computed: {
     car() {
