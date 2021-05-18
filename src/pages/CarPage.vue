@@ -6,6 +6,7 @@
       </div>
     </q-img>
     <q-card class="my-card">
+      <q-btn dense round flat color="grey" @click="editCar" icon="edit" class="absolute-top-right q-pr-sm q-pt-sm"/>
       <q-card-section>
         <div class="row">
           <div class="col">Year:</div>
@@ -36,7 +37,6 @@
           <div class="col">{{ car.vin }}</div>
         </div>
       </q-card-section>
-      <q-btn dense round flat color="grey" @click="editCar" icon="edit"/>
     </q-card>
     <TanksTable v-if="tanks && tanks.length > 0" :tanks="tanks" />
     <q-dialog v-model="newTankPopup"><NewTankDialog :vin="car.vin" /></q-dialog>
