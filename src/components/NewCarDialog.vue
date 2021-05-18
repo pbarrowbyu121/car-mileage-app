@@ -80,6 +80,7 @@
 
 <script>
 import { mapActions } from "vuex"
+import { uid } from "quasar";
 
 export default {
   name: "NewCarDialog",
@@ -141,7 +142,7 @@ export default {
     },
     onSubmit() {
       let newCarObj = {
-        id: this.vin,
+        id: uid(),
         year: this.year,
         make: this.make,
         model: this.model,
@@ -158,8 +159,11 @@ export default {
         },
         body: JSON.stringify(newCarObj)
       })
-      .then(() => {
-        this.fetchCars()
+      .then((res) => {
+        if(res.status === 201) {
+          console.log("successful add, emit updateCars", res)
+          this.fetchCars()
+        }
       });
       this.onReset();
     },

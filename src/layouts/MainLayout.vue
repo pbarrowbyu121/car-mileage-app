@@ -49,7 +49,6 @@
 
 <script>
 import MenuLink from "components/MenuLink.vue";
-import { mapActions } from "vuex";
 
 const linksData = [
   {
@@ -67,9 +66,6 @@ export default {
       leftDrawerOpen: false,
       essentialLinks: linksData
     };
-  },
-  methods: {
-    ...mapActions("carstore", ["changeName", ""])
   },
   computed: {
     username: {

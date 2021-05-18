@@ -50,14 +50,14 @@ export default {
   },
   methods: {
     async deleteTank(id) {
-      console.log("DELETE TANK called", id)
+      // console.log("DELETE TANK called", id)
       const res = await fetch(`http://localhost:5000/tanks/${id}`, {
         method: "DELETE",
       })
       .then((res) => {
         console.log("delete res", res)
         if(res.status === 200) {
-          this.$emit('deleteTank', id)
+          this.$emit('updateTanks')
         }
       });
     },

@@ -37,7 +37,7 @@
         </div>
       </q-card-section>
     </q-card>
-    <TanksTable v-if="tanks && tanks.length > 0" :tanks="tanks" @deleteTank="deleteTank"/>
+    <TanksTable v-if="tanks && tanks.length > 0" :tanks="tanks" @updateTanks="fetchTanks"/>
     <q-dialog v-model="newTankPopup"><NewTankDialog :vin="car.vin" /></q-dialog>
     <div class="text-center q-my-md">
       <q-btn
@@ -92,7 +92,7 @@ export default {
     },
     deleteCarAPI() {
       console.log("Delete car pressed")
-      fetch(`http://localhost:5000/cars/${this.vin}`, {
+      fetch(`http://localhost:5000/cars/${this.car.id}`, {
         method: "DELETE"
       })
       .then((res) => console.log("DELETE request", res))
@@ -114,7 +114,7 @@ export default {
       .then(res => console.log(res))
     },
     deleteTankAPI(id) {
-      console.log("DELETE TANK called", id)
+      // console.log("DELETE TANK called", id)
       fetch(`http://localhost:5000/tanks/${id}`, {
         method: "DELETE",
       })

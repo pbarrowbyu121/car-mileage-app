@@ -1,25 +1,52 @@
 {
   "cars": [
     {
-      "id": "3ABCD1B86AH512987",
-      "vin": "3ABCD1B86AH512987",
-      "make": "Subaru",
+      "id": "1A2B3C",
+      "year": 1996,
+      "make": "SUBARU",
       "model": "Legacy",
-      "license": "123 XYZ",
       "color": "Green",
-      "year": "1991",
+      "vin": "1A2B3C",
+      "license": "Test1",
       "name": "Green Goblin",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrOqxeEh_oX_XFe-Axk7Q2ulPvrOBY0YFTYbcjNhsDCSQdB6sma5XARS33Dbx61UQKEyY&usqp=CAU"
+      "image": "https://lh3.googleusercontent.com/proxy/gaq6lO4pSYNiDJSN5QDLQgR0VupCpvcIeMdD914HQvNr4HJ4ySGasbiwXo9F2Q-RfsuHm-5GmYcHHAYPmT0p4oZAUYxNOo_oxS0y"
+    },
+    {
+      "id": "123ABC567",
+      "year": 2010,
+      "make": "HONDA",
+      "model": "Civic",
+      "color": "Silver",
+      "vin": "123ABC567",
+      "license": "Test2",
+      "name": "Max",
+      "image": "https://cars.usnews.com/static/images/Auto/izmo/321536/2010_honda_civic_sdn_angularfront.jpg"
     }
   ],
   "tanks": [
     {
-      "id": "ff8b4121-7961-4f7c-9976-80d5aac5682b",
-      "vin": "3ABCD1B86AH512987",
-      "date": "05/18/2021",
-      "odometer": "111000",
-      "gallons": "23",
+      "id": "44d354e0-4805-4b6c-bb56-78c6e3962ff6",
+      "vin": "1A2B3C",
+      "date": "05/03/2021",
+      "odometer": "100",
+      "gallons": "2",
+      "cost": "30"
+    },
+    {
+      "id": "90e4d714-8369-4d26-a94d-2187d4a39772",
+      "vin": "1A2B3C",
+      "date": "05/04/2021",
+      "odometer": "200",
+      "gallons": "13",
       "cost": "34"
+    },
+    {
+      "id": "8f91b653-48a7-4de2-89f3-e6e6ae6f6e28",
+      "vin": "123ABC567",
+      "date": "05/03/2021",
+      "odometer": "10",
+      "gallons": "12",
+      "cost": "12"
     }
   ]
 }

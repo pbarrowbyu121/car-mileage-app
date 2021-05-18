@@ -11,7 +11,7 @@ export default {
   methods: {
     ...mapActions("carstore", ["getTanksAction", "getCarsAction"]),
     fetchCars() {
-      console.log("fetchCars called")
+      console.log("fetchCars called from App")
       fetch("http://localhost:5000/cars", {
         method: "GET"
       })
