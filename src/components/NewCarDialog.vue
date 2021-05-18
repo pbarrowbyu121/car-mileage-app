@@ -18,6 +18,7 @@
           input-debounce="0"
           label="Make"
           :options="makeOptions"
+          @filter="filterFn"
           style="width: 250px"
           >
 
@@ -86,7 +87,23 @@ export default {
     };
   },
   methods: {
+    filterFn (val, update) {
+      if (val === '') {
+        update(() => {
+          this.makeOptions = this.makeOptionsAll
 
+          // with Quasar v1.7.4+
+          // here you have access to "ref" which
+          // is the Vue reference of the QSelect
+        })
+        return
+      }
+
+      update(() => {
+        const needle = val.toLowerCase()
+        this.makeOptions = this.makeOptionsAll.filter(v => v.toLowerCase().indexOf(needle) > -1)
+      })
+    },
     async onSubmit() {
       let newCarObj = {
         id: this.vin,
@@ -129,7 +146,7 @@ export default {
       })
       .then(res => {
         console.log("resposne from nh", res.Results)
-        this.makeOptions = res.Results.map(result => result.Make_Name)
+        this.makeOptionsAll = res.Results.map(result => result.Make_Name).sort()
       })
     },
     getCarModels() {
