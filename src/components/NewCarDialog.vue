@@ -10,7 +10,18 @@
         <!-- Year -->
         <q-select filled dense clearable v-model="year" :options="yearOptions" @input="getCarMakes" label="Year" />
         <!-- Make -->
-        <q-select v-if="year" filled dense clearable v-model="make" :options="makeOptions" @input="getCarModels" label="Make" />
+        <!-- <q-select v-if="year" filled dense clearable v-model="make" :options="makeOptions" @input="getCarModels" label="Make" /> -->
+        <q-select
+          filled
+          v-model="make"
+          use-input
+          input-debounce="0"
+          label="Make"
+          :options="makeOptions"
+          style="width: 250px"
+          >
+
+      </q-select>
 
         <!-- Model -->
         <!-- <q-input filled v-model="model" label="Model" dense /> -->
@@ -69,11 +80,13 @@ export default {
         1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021
       ],
       makeOptions: [],
+      makeOptionsAll:[],
       modelOptions: [],
       // addCarConfirmation: false
     };
   },
   methods: {
+
     async onSubmit() {
       let newCarObj = {
         id: this.vin,
@@ -108,16 +121,16 @@ export default {
     },
     getCarMakes() {
       console.log("getCarMakes called")
-      fetch(`http://api.carmd.com/v3.0/make?year=${this.year}`, {
+      fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`, {
         method: "GET",
-        headers: {
-          "content-type": "application/json",
-          "authorization": "Basic MmM2M2Y4MzItODNlMC00NGE4LWFmZjItOGI2NGRhOTdkMzY3",
-          "partner-token": "214086a09d764e0eae3840202841c336"
-        }
       })
-      .then(res => res.json())
-      .then(res => this.makeOptions = res.data)
+      .then(res => {
+        return res.json()
+      })
+      .then(res => {
+        console.log("resposne from nh", res.Results)
+        this.makeOptions = res.Results.map(result => result.Make_Name)
+      })
     },
     getCarModels() {
       console.log("getCarMakes called")

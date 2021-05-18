@@ -8,9 +8,5 @@
 
 export default {
   name: "App",
-  async created() {
-    this.fetchCars()
-    this.fetchTanks();
-  }
 };
 </script>

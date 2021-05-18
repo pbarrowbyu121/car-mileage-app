@@ -37,6 +37,7 @@ export default {
       this.addCarDialog = true;
     },
     fetchCars() {
+      console.log("fetchCars called")
       fetch("http://localhost:5000/cars", {
         method: "GET"
       })

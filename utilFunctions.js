@@ -20,7 +20,6 @@ export function calcMPG(tanks) {
     if(tanks.length > 1) {
         // let sortedTanks = tanks.sort(this.sortTanks)
         let sortedTanks = sortTanks(tanks, 'asc')
-        console.log("sortedTanks CALLED", sortedTanks)
         let gallons = 0
         let miles = parseInt(tanks[tanks.length - 1].odometer) - parseInt(tanks[0].odometer)
         let mpg = 0
