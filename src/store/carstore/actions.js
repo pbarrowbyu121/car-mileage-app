@@ -6,6 +6,21 @@ export function changeName ({}, payload) {
     // console.log("Action called", payload)
     console.log("action called here", payload)
 }
+export function deleteCarAction({}, payload) {
+  fetch(`http://localhost:5000/cars/${payload}`, {
+    method: "DELETE"
+  })
+  .then((res) => console.log("deleteCar request", res))
+}
+
+export function deleteTankAction({}, payload) {
+  fetch(`http://localhost:5000/tanks/${payload}`, {
+    method: "DELETE",
+  })
+  .then((res) => {
+    console.log("deleteTankAction res", res)
+  });
+}
 
 export function addCarAction({ commit }, payload) {
   fetch("http://localhost:5000/cars", {

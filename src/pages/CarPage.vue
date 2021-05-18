@@ -37,7 +37,7 @@
         </div>
       </q-card-section>
     </q-card>
-    <TanksTable v-if="tanks && tanks.length > 0" :tanks="tanks" @updateTanks="getTanksAction"/>
+    <TanksTable v-if="tanks && tanks.length > 0" :tanks="tanks" />
     <q-dialog v-model="newTankPopup"><NewTankDialog :vin="car.vin" /></q-dialog>
     <div class="text-center q-my-md">
       <q-btn
@@ -79,47 +79,18 @@ export default {
     };
   },
   methods: {
-    ...mapActions("carstore", ["getCarsAction", "getTanksAction"]),
+    ...mapActions("carstore", ["getCarsAction", "getTanksAction", "deleteCarAction", "deleteTankAction"]),
     addTankDialogToggle() {
       this.newTankPopup = true;
     },
-    deleteCar() {
+    async deleteCar() {
       if(this.tanks) {
         let deleteTanksArr = this.tanks.map(tank => tank.id)
-        deleteTanksArr.forEach(id => this.deleteTankAPI(id))
+        deleteTanksArr.forEach(id => this.deleteTankAction(id))
       }
-      this.deleteCarAPI()
-    },
-    deleteCarAPI() {
-      console.log("Delete car pressed")
-      fetch(`http://localhost:5000/cars/${this.car.id}`, {
-        method: "DELETE"
-      })
-      .then((res) => console.log("DELETE request", res))
-      .then(() => {
-        this.getCarsAction()
-        this.$router.push({ path: `/` })
-      })
-    },
-    getCarImage() {
-      fetch(`http://api.carmd.com/v3.0/image?vin=${this.vin}`, {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          "authorization": "Basic MmM2M2Y4MzItODNlMC00NGE4LWFmZjItOGI2NGRhOTdkMzY3",
-          "partner-token": "214086a09d764e0eae3840202841c336"
-        }
-      })
-      .then(res => res.json())
-      .then(res => console.log(res))
-    },
-    deleteTankAPI(id) {
-      fetch(`http://localhost:5000/tanks/${id}`, {
-        method: "DELETE",
-      })
-      .then((res) => {
-        console.log("delete res", res)
-      });
+      await this.deleteCarAction(this.car.id)
+      await this.getCarsAction()
+      this.$router.push({ path: '/' })
     },
   },
   computed: {

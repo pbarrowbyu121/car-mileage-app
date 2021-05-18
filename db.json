@@ -10,43 +10,24 @@
       "license": "Test1",
       "name": "Green Goblin",
       "image": "https://lh3.googleusercontent.com/proxy/gaq6lO4pSYNiDJSN5QDLQgR0VupCpvcIeMdD914HQvNr4HJ4ySGasbiwXo9F2Q-RfsuHm-5GmYcHHAYPmT0p4oZAUYxNOo_oxS0y"
-    },
-    {
-      "id": "123ABC567",
-      "year": 2010,
-      "make": "HONDA",
-      "model": "Civic",
-      "color": "Silver",
-      "vin": "123ABC567",
-      "license": "Test2",
-      "name": "Max",
-      "image": "https://cars.usnews.com/static/images/Auto/izmo/321536/2010_honda_civic_sdn_angularfront.jpg"
     }
   ],
   "tanks": [
     {
-      "id": "44d354e0-4805-4b6c-bb56-78c6e3962ff6",
-      "vin": "1A2B3C",
-      "date": "05/03/2021",
-      "odometer": "100",
-      "gallons": "2",
-      "cost": "30"
-    },
-    {
-      "id": "90e4d714-8369-4d26-a94d-2187d4a39772",
+      "id": "3991d302-464f-4c94-b593-b7781856d289",
       "vin": "1A2B3C",
       "date": "05/04/2021",
-      "odometer": "200",
-      "gallons": "13",
-      "cost": "34"
+      "odometer": "34",
+      "gallons": "456",
+      "cost": "45"
     },
     {
-      "id": "8f91b653-48a7-4de2-89f3-e6e6ae6f6e28",
-      "vin": "123ABC567",
-      "date": "05/03/2021",
-      "odometer": "10",
-      "gallons": "12",
-      "cost": "12"
+      "id": "100705e9-5277-4596-ab83-79340ace45f2",
+      "vin": "1A2B3C",
+      "date": "05/12/2021",
+      "odometer": "45",
+      "gallons": "56",
+      "cost": "45"
     }
   ]
 }
