@@ -105,7 +105,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions("carstore", ["getCarsAction"]),
+    ...mapActions("carstore", ["getCarsAction", "addCarAction"]),
     filterFnMakes (val, update) {
       if (val === '') {
         update(() => {
@@ -140,7 +140,7 @@ export default {
         this.modelOptions = this.modelOptionsAll.filter(v => v.toLowerCase().indexOf(needle) > -1)
       })
     },
-    onSubmit() {
+    async onSubmit() {
       let newCarObj = {
         id: uid(),
         year: this.year,
@@ -152,17 +152,8 @@ export default {
         name: this.name,
         image: this.image
       };
-      const res = fetch("http://localhost:5000/cars", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify(newCarObj)
-      })
-      .then(() => {
-        this.getCarsAction()
-      });
-      this.onReset();
+      await this.addCarAction(newCarObj)
+      this.getCarsAction()
     },
     onReset() {
       // resets the form, clears state
