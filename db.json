@@ -10,6 +10,17 @@
       "license": "Test1",
       "name": "Green Goblin",
       "image": "https://lh3.googleusercontent.com/proxy/gaq6lO4pSYNiDJSN5QDLQgR0VupCpvcIeMdD914HQvNr4HJ4ySGasbiwXo9F2Q-RfsuHm-5GmYcHHAYPmT0p4oZAUYxNOo_oxS0y"
+    },
+    {
+      "id": "a7cf2964-5133-4542-8922-0af1bdcdc618",
+      "year": 2010,
+      "make": "HONDA",
+      "model": "Civic",
+      "color": "Silver",
+      "vin": "FAKEVIN123",
+      "license": "Blah1",
+      "name": "Max",
+      "image": "https://www.cstatic-images.com/car-pictures/maxWidth900/cac00hoc023f0112.png"
     }
   ],
   "tanks": [
@@ -20,6 +31,22 @@
       "odometer": "122",
       "gallons": "122",
       "cost": "122"
+    },
+    {
+      "id": "14485788-8cd6-4ad3-ac0f-d4d555858074",
+      "vin": "FAKEVIN123",
+      "date": "05/03/2021",
+      "odometer": "110",
+      "gallons": "23",
+      "cost": "45"
+    },
+    {
+      "id": "15cde22d-81ce-4b55-9e66-4f1d964a5c8c",
+      "vin": "FAKEVIN123",
+      "date": "05/04/2021",
+      "odometer": "34",
+      "gallons": "45",
+      "cost": "56"
     }
   ]
 }

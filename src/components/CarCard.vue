@@ -9,12 +9,12 @@
     <q-card-section class="text-center">
       {{ car.year }} {{ car.make }} {{ car.model }}
     </q-card-section>
-    <q-card-section v-if="carMPG && miles" class="q-pt-none">
-      <div class="row">
+    <q-card-section class="q-pt-none">
+      <div v-if="carMPG" class="row">
         <div class="col">Mileage:</div>
         <div class="col">{{ carMPG }} mpg</div>
       </div>
-      <div class="row">
+      <div v-if="miles" class="row">
         <div class="col">Total Miles:</div>
         <div class="col">{{ miles | formatMiles }}</div>
       </div>
@@ -33,19 +33,17 @@ export default {
     }
   },
   computed: {
-    miles: {
-      get() {
+    miles() {
         let tanks = this.$store.state.carstore.tanks.filter(
           tank => tank.vin === this.car.vin
         );
         if (tanks.length > 0) {
+          console.log("tanks for miles", tanks)
           return tanks[0].odometer;
         }
         return 0;
-      }
     },
-    carMPG: {
-      get() {
+    carMPG() {
         let tanks = this.$store.state.carstore.tanks.filter(
           tank => tank.vin === this.car.vin
         );
@@ -54,7 +52,6 @@ export default {
         } else {
           return null;
         }
-      }
     }
   },
   filters: {
