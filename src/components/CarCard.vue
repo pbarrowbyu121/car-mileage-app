@@ -38,7 +38,6 @@ export default {
           tank => tank.vin === this.car.vin
         );
         if (tanks.length > 0) {
-          console.log("tanks for miles", tanks)
           return tanks[0].odometer;
         }
         return 0;

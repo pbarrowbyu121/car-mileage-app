@@ -158,7 +158,6 @@ export default {
       this.image = null;
     },
     getCarMakes() {
-      // console.log("getCarMakes called")
       fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`, {
         method: "GET",
       })
@@ -166,17 +165,15 @@ export default {
         return res.json()
       })
       .then(res => {
-        console.log("resposne from nh", res.Results)
+        console.log("response from nh", res.Results)
         this.makeOptionsAll = res.Results.map(result => result.Make_Name).sort()
       })
     },
     getCarModels() {
-      // console.log("getCarMakes called")
       fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${this.make.toLowerCase()}?format=json`, {
         method: "GET",
       })
       .then(res => {
-        // console.log("response models", res)
         return res.json()
       })
       .then(res => {

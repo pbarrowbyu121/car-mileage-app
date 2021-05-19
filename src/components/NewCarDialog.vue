@@ -80,6 +80,7 @@
 <script>
 import { mapActions } from "vuex"
 import { uid } from "quasar";
+import axios from "axios";
 
 export default {
   name: "NewCarDialog",
@@ -100,7 +101,6 @@ export default {
       makeOptionsAll:[],
       modelOptions: [],
       modelOptionsAll: [],
-      // addCarConfirmation: false
     };
   },
   methods: {
@@ -109,10 +109,6 @@ export default {
       if (val === '') {
         update(() => {
           this.makeOptions = this.makeOptionsAll
-
-          // with Quasar v1.7.4+
-          // here you have access to "ref" which
-          // is the Vue reference of the QSelect
         })
         return
       }
@@ -126,10 +122,6 @@ export default {
       if (val === '') {
         update(() => {
           this.modelOptions = this.modelOptionsAll
-
-          // with Quasar v1.7.4+
-          // here you have access to "ref" which
-          // is the Vue reference of the QSelect
         })
         return
       }
@@ -165,26 +157,20 @@ export default {
       this.name = null;
       this.image = null;
     },
+
+    // axios version of get request for makes
     getCarMakes() {
-      // console.log("getCarMakes called")
-      fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`, {
-        method: "GET",
-      })
-      .then(res => {
-        return res.json()
-      })
-      .then(res => {
-        console.log("resposne from nh", res.Results)
-        this.makeOptionsAll = res.Results.map(result => result.Make_Name).sort()
+      axios.get(`https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`)
+      .then(response => {
+        this.makeOptionsAll = response.data.Results.map(result => result.Make_Name).sort()
       })
     },
+
     getCarModels() {
-      // console.log("getCarMakes called")
       fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${this.make.toLowerCase()}?format=json`, {
         method: "GET",
       })
       .then(res => {
-        // console.log("response models", res)
         return res.json()
       })
       .then(res => {

@@ -66,6 +66,30 @@
       "odometer": "100",
       "gallons": "15",
       "cost": "23"
+    },
+    {
+      "id": "e44fc85e-6856-4e1a-8caf-3326aa8ad5ed",
+      "vin": "1A2B3C",
+      "date": "05/04/2021",
+      "odometer": "150",
+      "gallons": "12",
+      "cost": "35"
+    },
+    {
+      "id": "27d49aef-8301-4a22-929c-269101e7d93a",
+      "vin": "1A2B3C",
+      "date": "05/06/2021",
+      "odometer": "170",
+      "gallons": "12",
+      "cost": "34"
+    },
+    {
+      "id": "b3e38776-6b17-4291-beae-3f47a1a55a93",
+      "vin": "1A2B3C",
+      "date": "05/07/2021",
+      "odometer": "180",
+      "gallons": "23",
+      "cost": "45"
     }
   ]
 }

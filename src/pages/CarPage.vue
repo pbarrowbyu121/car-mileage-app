@@ -98,7 +98,6 @@ export default {
       this.$router.push({ path: '/' })
     },
     editCar() {
-      console.log("editCar pressed")
       this.editCarPopup = true
     }
   },
