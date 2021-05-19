@@ -93,7 +93,7 @@ export default {
         odometer: this.editTankOdometer
       }
       await this.editTankAction(editedTankObj)
-      this.getTanksAction()
+      await this.getTanksAction()
     }
   }
 };

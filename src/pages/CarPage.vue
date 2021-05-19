@@ -94,7 +94,7 @@ export default {
         deleteTanksArr.forEach(id => this.deleteTankAction(id))
       }
       await this.deleteCarAction(this.car.id)
-      this.getCarsAction()
+      await this.getCarsAction()
       this.$router.push({ path: '/' })
     },
     editCar() {

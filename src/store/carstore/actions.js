@@ -52,9 +52,11 @@ export function addTankAction ({}, payload) {
 // GET requests
 export function getCarsAction({ commit }) {
   fetch("http://localhost:5000/cars")
-  .then(response => response.json())
   .then(response => {
     console.log("response from GET cars", response)
+    return response.json()
+  })
+  .then(response => {
     commit('GET_CARS_MUTATION', response)
   })
   .catch(error => {

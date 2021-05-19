@@ -102,7 +102,7 @@ export default {
         cost: this.cost
       };
       await this.addTankAction(newTankObj)
-      this.getTanksAction()
+      await this.getTanksAction()
     },
     onReset() {
       // resets the form, clears state

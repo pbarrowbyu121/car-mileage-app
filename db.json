@@ -2,7 +2,7 @@
   "cars": [
     {
       "id": "ce8b742a-aaaa-4a72-9262-0f331f1dee17",
-      "year": 2010,
+      "year": 2011,
       "make": "HONDA",
       "model": "Civic",
       "color": "Silver",
@@ -18,6 +18,30 @@
       "vin": "FAKEVIN456",
       "date": "05/03/2021",
       "odometer": "110",
+      "gallons": "12",
+      "cost": "35"
+    },
+    {
+      "id": "fada20ea-7882-412e-a8a7-4314f0502bb5",
+      "vin": "FAKEVIN456",
+      "date": "05/04/2021",
+      "odometer": "500",
+      "gallons": "12",
+      "cost": "35"
+    },
+    {
+      "id": "ac301ed5-16e0-4855-a009-f07e78e24034",
+      "vin": "FAKEVIN456",
+      "date": "05/05/2021",
+      "odometer": "700",
+      "gallons": "7",
+      "cost": "25"
+    },
+    {
+      "id": "9321f537-cb37-4ea8-ad09-2315387ce53e",
+      "vin": "FAKEVIN456",
+      "date": "05/06/2021",
+      "odometer": "1000",
       "gallons": "12",
       "cost": "35"
     }

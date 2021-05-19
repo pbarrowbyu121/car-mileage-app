@@ -146,7 +146,7 @@ export default {
         image: this.image
       };
       await this.editCarAction(editedCarObj)
-      this.getCarsAction()
+      await this.getCarsAction()
     },
     onReset() {
       // resets the form, clears state
