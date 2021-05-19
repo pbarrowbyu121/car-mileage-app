@@ -76,7 +76,7 @@ export default {
     NewTankDialog,
     EditCarDialog
   },
-  props: ["vin"],
+  props: ["id"],
   data() {
     return {
       newTankPopup: false,
@@ -94,7 +94,7 @@ export default {
         deleteTanksArr.forEach(id => this.deleteTankAction(id))
       }
       await this.deleteCarAction(this.car.id)
-      await this.getCarsAction()
+      this.getCarsAction()
       this.$router.push({ path: '/' })
     },
     editCar() {
@@ -104,15 +104,18 @@ export default {
   computed: {
     car() {
       return this.$store.state.carstore.cars.filter(
-        car => car.vin === this.vin
+        car => car.id === this.id
       )[0]
     },
     tanks() {
-      return sortTanks(this.$store.state.carstore.tanks.filter(tank => tank.vin === this.vin), "desc")
+      const carVin = this.$store.state.carstore.cars.filter(
+        car => car.id === this.id
+      )[0].vin
+      return sortTanks(this.$store.state.carstore.tanks.filter(tank => tank.vin === carVin), "desc")
     },
     carMPG() {
       let tanks = this.$store.state.carstore.tanks.filter(
-        tank => tank.vin === this.vin
+        tank => tank.vin === this.car.vin
       );
       if (tanks.length > 0) {
         return calcMPG(tanks);

@@ -22,7 +22,7 @@ export function addCarAction({ commit }, payload) {
 // axios post request shorthand
 export function addTankAction ({}, payload) {
   axios.post("http://localhost:5000/tanks", payload)
-  .then(response => console.log("shorthand axios POST", response))
+  .then(response => console.log("response from POST tank request", response))
 }
 
 // axios post request longhand
@@ -54,7 +54,7 @@ export function getCarsAction({ commit }) {
   fetch("http://localhost:5000/cars")
   .then(response => response.json())
   .then(response => {
-    console.log("response from getCarsAction", response)
+    console.log("response from GET cars", response)
     commit('GET_CARS_MUTATION', response)
   })
   .catch(error => {
@@ -62,27 +62,12 @@ export function getCarsAction({ commit }) {
   })
 }
 
-// export function getCarsAction ({ commit }) {
-//   fetch("http://localhost:5000/cars", {
-//     method: "GET"
-//   })
-//   .then((res) => {
-//     return res.json()
-//   })
-//   .then((res) => {
-//     console.log("response", res)
-//     commit('GET_CARS_MUTATION', res)
-//   })
-//   .catch(e => {
-//     console.log(e)
-//   })
-// }
-
 export function getTanksAction ({ commit }) {
   fetch("http://localhost:5000/tanks", {
       method: "GET"
     })
     .then((res) => {
+      console.log("response from GET tanks", res)
       return res.json()
     })
     .then((res) => {
@@ -103,11 +88,9 @@ export function editCarAction({}, payload) {
     body: JSON.stringify(payload)
   })
   .then((res) => {
+    console.log("response from PUT car", res)
     return res.json()
   })
-  .then((res) => {
-    console.log("response from PUT request", res)
-  });
 }
 
 export function editTankAction({}, payload) {
@@ -119,11 +102,9 @@ export function editTankAction({}, payload) {
     body: JSON.stringify(payload)
   })
   .then((res) => {
+    console.log("response from PUT tank", res)
     return res.json()
   })
-  .then((res) => {
-    console.log("response from PUT request", res)
-  });
 }
 
 // DELETE requests
@@ -131,7 +112,7 @@ export function deleteCarAction({}, payload) {
   fetch(`http://localhost:5000/cars/${payload}`, {
     method: "DELETE"
   })
-  .then((res) => console.log("deleteCar request", res))
+  .then((res) => console.log("response from DELETE car", res))
 }
 
 export function deleteTankAction({}, payload) {
@@ -139,7 +120,7 @@ export function deleteTankAction({}, payload) {
     method: "DELETE",
   })
   .then((res) => {
-    console.log("deleteTankAction res", res)
+    console.log("response from DELETE tank", res)
   });
 }
 

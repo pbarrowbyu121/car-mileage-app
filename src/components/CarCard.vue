@@ -1,5 +1,5 @@
 <template>
-  <q-card class="my-card q-ma-md" @click="goToCar(car.vin)">
+  <q-card class="my-card q-ma-md" @click="goToCar(car.id)">
     <q-img :src="car.image">
       <div class="absolute-bottom text-subtitle1 text-center">
         "{{ car.name }}"
@@ -28,8 +28,8 @@ export default {
   name: "CarCard",
   props: ["car"],
   methods: {
-    goToCar(vin) {
-      this.$router.push({ path: `car/${vin}` });
+    goToCar(id) {
+      this.$router.push({ path: `car/${id}` });
     }
   },
   computed: {

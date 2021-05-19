@@ -1,76 +1,25 @@
 {
   "cars": [
     {
-      "id": "1A2B3C",
-      "year": 2000,
-      "make": "SUBARU",
-      "model": "Legacy",
-      "color": "Green",
-      "vin": "1A2B3C",
-      "license": "Test1",
-      "name": "Green Goblin",
-      "image": "https://i.pinimg.com/originals/fb/cc/ec/fbcceca1d9b2f235bf8add072578c21d.jpg"
-    },
-    {
-      "id": "a7cf2964-5133-4542-8922-0af1bdcdc618",
+      "id": "ce8b742a-aaaa-4a72-9262-0f331f1dee17",
       "year": 2010,
       "make": "HONDA",
       "model": "Civic",
       "color": "Silver",
-      "vin": "FAKEVIN123",
+      "vin": "FAKEVIN456",
       "license": "Blah1",
       "name": "Max",
-      "image": "https://www.cstatic-images.com/car-pictures/maxWidth900/cac00hoc023f0112.png"
+      "image": "https://lh3.googleusercontent.com/proxy/U5EezDixmiDiTfvNr2bKMFBEEH54oX8QDqUTfQ4Cm3N5eW-Eyqop6oGEwjk_Z9JG9CxFI5_sPZ-HMnq3gOsZrCilwr6EREP7"
     }
   ],
   "tanks": [
     {
-      "id": "423c1d5a-98c2-4f08-af36-98e56ffd2125",
-      "vin": "1A2B3C",
-      "date": "05/03/2021",
-      "odometer": "122",
-      "gallons": "122",
-      "cost": "122"
-    },
-    {
-      "id": "14485788-8cd6-4ad3-ac0f-d4d555858074",
-      "vin": "FAKEVIN123",
+      "id": "7e8aa95a-1e83-4f4f-90db-03d20a706dc2",
+      "vin": "FAKEVIN456",
       "date": "05/03/2021",
       "odometer": "110",
-      "gallons": "23",
-      "cost": "45"
-    },
-    {
-      "id": "15cde22d-81ce-4b55-9e66-4f1d964a5c8c",
-      "vin": "FAKEVIN123",
-      "date": "05/04/2021",
-      "odometer": "34",
-      "gallons": "45",
-      "cost": "56"
-    },
-    {
-      "id": "e44fc85e-6856-4e1a-8caf-3326aa8ad5ed",
-      "vin": "1A2B3C",
-      "date": "05/04/2021",
-      "odometer": "150",
       "gallons": "12",
       "cost": "35"
-    },
-    {
-      "id": "27d49aef-8301-4a22-929c-269101e7d93a",
-      "vin": "1A2B3C",
-      "date": "05/06/2021",
-      "odometer": "170",
-      "gallons": "12",
-      "cost": "34"
-    },
-    {
-      "id": "b3e38776-6b17-4291-beae-3f47a1a55a93",
-      "vin": "1A2B3C",
-      "date": "05/07/2021",
-      "odometer": "180",
-      "gallons": "25",
-      "cost": "50"
     }
   ]
 }

@@ -164,11 +164,10 @@ export default {
 
     // axios version of get request for makes
     async getCarMakes() {
-      console.log("Getting Car Makes from external API")
       this.loading = true
       await axios.get(`https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`)
       .then(response => {
-        console.log("response from external API car makes", response)
+        console.log("external GET makes", response)
         this.makeOptionsAll = response.data.Results.map(result => result.Make_Name).sort()
       })
       this.loading = false
@@ -183,7 +182,7 @@ export default {
         return res.json()
       })
       .then(res => {
-        console.log("response from external API car models", res)
+        console.log("external GET models", res)
         this.modelOptionsAll = res.Results.map(result => result.Model_Name).sort()
       })
       this.loading = false
