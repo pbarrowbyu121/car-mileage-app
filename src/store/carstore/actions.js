@@ -19,7 +19,7 @@ export function addCarAction({ commit }, payload) {
   })
 }
 
-// axios post request
+// axios post request shorthand
 export function addTankAction ({}, payload) {
   axios.post("http://localhost:5000/tanks", payload)
   .then(response => console.log("shorthand axios POST", response))

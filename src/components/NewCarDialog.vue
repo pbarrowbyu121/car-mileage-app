@@ -74,6 +74,9 @@
     <q-card-actions align="right">
       <q-btn v-close-popup flat color="primary" label="Cancel" />
     </q-card-actions>
+    <q-inner-loading :showing="loading">
+      <q-spinner-gears size="50px" color="primary" />
+    </q-inner-loading>
   </q-card>
 </template>
 
@@ -101,6 +104,7 @@ export default {
       makeOptionsAll:[],
       modelOptions: [],
       modelOptionsAll: [],
+      loading: false
     };
   },
   methods: {
@@ -159,23 +163,30 @@ export default {
     },
 
     // axios version of get request for makes
-    getCarMakes() {
-      axios.get(`https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`)
+    async getCarMakes() {
+      console.log("Getting Car Makes from external API")
+      this.loading = true
+      await axios.get(`https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`)
       .then(response => {
+        console.log("response from external API car makes", response)
         this.makeOptionsAll = response.data.Results.map(result => result.Make_Name).sort()
       })
+      this.loading = false
     },
 
-    getCarModels() {
-      fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${this.make.toLowerCase()}?format=json`, {
+    async getCarModels() {
+      this.loading = true
+      await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${this.make.toLowerCase()}?format=json`, {
         method: "GET",
       })
       .then(res => {
         return res.json()
       })
       .then(res => {
+        console.log("response from external API car models", res)
         this.modelOptionsAll = res.Results.map(result => result.Model_Name).sort()
       })
+      this.loading = false
     },
   },
 };

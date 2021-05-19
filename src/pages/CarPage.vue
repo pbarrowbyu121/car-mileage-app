@@ -6,7 +6,7 @@
       </div>
     </q-img>
     <q-card class="my-card">
-      <q-btn dense round flat color="grey" @click="editCar" icon="edit" class="absolute-top-right q-pr-sm q-pt-sm"/>
+      <q-btn dense round flat color="grey" @click="editCar" icon="edit" class="absolute-top-right q-pr-sm q-pt-sm" style="z-index: 1"/>
       <q-card-section>
         <div class="row">
           <div class="col">Year:</div>

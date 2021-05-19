@@ -21,17 +21,6 @@
       "license": "Blah1",
       "name": "Max",
       "image": "https://www.cstatic-images.com/car-pictures/maxWidth900/cac00hoc023f0112.png"
-    },
-    {
-      "id": "0b9dddf2-c5c6-41e3-81d2-33f449cb8cd2",
-      "year": 2000,
-      "make": "LAND ROVER",
-      "model": "Freelander",
-      "color": "Yellow",
-      "vin": "FAKVIN9856",
-      "license": "FAKE",
-      "name": "Stan",
-      "image": "https://lh3.googleusercontent.com/proxy/IPES8GIi_578rLUZmUpiGKIvoFJnOzrVt9rFO_LfwIXc1HW5l6ipRjxKyb-HgQfLPdZ5NBDhnuoRdQ-Xn2rGwHqAIy7lNwaKlYVVEObrRy5gCs2pKw0oSwk"
     }
   ],
   "tanks": [
@@ -60,14 +49,6 @@
       "cost": "56"
     },
     {
-      "id": "7acbb661-c672-4453-8e37-b9c08575bfaf",
-      "vin": "FAKVIN9856",
-      "date": "05/03/2021",
-      "odometer": "100",
-      "gallons": "15",
-      "cost": "23"
-    },
-    {
       "id": "e44fc85e-6856-4e1a-8caf-3326aa8ad5ed",
       "vin": "1A2B3C",
       "date": "05/04/2021",
@@ -88,8 +69,8 @@
       "vin": "1A2B3C",
       "date": "05/07/2021",
       "odometer": "180",
-      "gallons": "23",
-      "cost": "45"
+      "gallons": "25",
+      "cost": "50"
     }
   ]
 }

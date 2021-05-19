@@ -7,7 +7,7 @@
     <q-card-section class="q-pt-none">
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- Year -->
-        <q-select filled dense clearable v-model="year" :options="yearOptions" @input="getCarMakes" label="Year" />
+        <q-select filled dense v-model="year" :options="yearOptions" @input="getCarMakes" label="Year" />
         <!-- Make -->
         <q-select
           v-if="year"
@@ -69,11 +69,12 @@
       </q-form>
     </q-card-section>
 
-    <!-- <q-separator /> -->
-
     <q-card-actions align="right">
       <q-btn v-close-popup flat color="primary" label="Cancel" />
     </q-card-actions>
+    <q-inner-loading :showing="loading">
+      <q-spinner-gears size="50px" color="primary" />
+    </q-inner-loading>
   </q-card>
 </template>
 
@@ -101,6 +102,7 @@ export default {
       makeOptionsAll:[],
       modelOptions: [],
       modelOptionsAll: [],
+      loading: false
     };
   },
   methods: {
@@ -157,8 +159,9 @@ export default {
       this.name = null;
       this.image = null;
     },
-    getCarMakes() {
-      fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`, {
+    async getCarMakes() {
+      this.loading = true
+      await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`, {
         method: "GET",
       })
       .then(res => {
@@ -168,9 +171,11 @@ export default {
         console.log("response from nh", res.Results)
         this.makeOptionsAll = res.Results.map(result => result.Make_Name).sort()
       })
+      this.loading = false
     },
-    getCarModels() {
-      fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${this.make.toLowerCase()}?format=json`, {
+    async getCarModels() {
+      this.loading = true
+      await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${this.make.toLowerCase()}?format=json`, {
         method: "GET",
       })
       .then(res => {
@@ -179,6 +184,7 @@ export default {
       .then(res => {
         this.modelOptionsAll = res.Results.map(result => result.Model_Name).sort()
       })
+      this.loading = false
     },
   },
   created() {
