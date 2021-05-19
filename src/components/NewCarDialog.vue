@@ -7,10 +7,10 @@
     <q-card-section class="q-pt-none">
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- Year -->
-        <q-select filled dense clearable v-model="year" :options="yearOptions" @input="getCarMakes" label="Year" />
+        <q-select filled dense v-model="year" :options="yearOptions" @input="getCarMakes" label="Year" />
         <!-- Make -->
         <q-select
-          v-if="year"
+          v-if="year && makeOptionsAll.length > 0"
           dense
           filled
           v-model="make"
@@ -27,7 +27,7 @@
 
         <!-- Model -->
         <q-select
-          v-if="make"
+          v-if="make && modelOptionsAll.length > 0"
           dense
           filled
           v-model="model"

@@ -1,7 +1,7 @@
 <template>
   <q-card class="my-card text-permanent-marker">
     <q-card-section>
-      <div class="text-h6">Fillup for 2010 Honda Civic Silver"</div>
+      <div class="text-h6">Fillup for {{ car.year }} {{ car.make }} {{ car.model }}, {{ car.color }}</div>
     </q-card-section>
 
     <q-card-section class="q-pt-none">
@@ -89,13 +89,13 @@ export default {
       addTankConfirmation: false,
     };
   },
-  props: ["vin"],
+  props: ["car"],
   methods: {
     ...mapActions("carstore", ["getTanksAction", "addTankAction"]),
     async onSubmit() {
       let newTankObj = {
         id: uid(),
-        vin: this.vin,
+        vin: this.car.vin,
         date: this.addTankDate,
         odometer: this.odometer,
         gallons: this.gallons,

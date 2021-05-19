@@ -34,21 +34,33 @@ export function addTankAction ({}, payload) {
 }
 
 // GET requests
-export function getCarsAction ({ commit }) {
-  fetch("http://localhost:5000/cars", {
-    method: "GET"
+export function getCarsAction({ commit }) {
+  fetch("http://localhost:5000/cars")
+  .then(response => response.json())
+  .then(response => {
+    console.log("response from getCarsAction", response)
+    commit('GET_CARS_MUTATION', response)
   })
-  .then((res) => {
-    return res.json()
-  })
-  .then((res) => {
-    console.log("response", res)
-    commit('GET_CARS_MUTATION', res)
-  })
-  .catch(e => {
-    console.log(e)
+  .catch(error => {
+    console.log(error)
   })
 }
+
+// export function getCarsAction ({ commit }) {
+//   fetch("http://localhost:5000/cars", {
+//     method: "GET"
+//   })
+//   .then((res) => {
+//     return res.json()
+//   })
+//   .then((res) => {
+//     console.log("response", res)
+//     commit('GET_CARS_MUTATION', res)
+//   })
+//   .catch(e => {
+//     console.log(e)
+//   })
+// }
 
 export function getTanksAction ({ commit }) {
   fetch("http://localhost:5000/tanks", {

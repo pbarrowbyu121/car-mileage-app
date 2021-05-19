@@ -39,7 +39,7 @@
       </q-card-section>
     </q-card>
     <TanksTable v-if="tanks && tanks.length > 0" :tanks="tanks" />
-    <q-dialog v-model="newTankPopup"><NewTankDialog :vin="car.vin" /></q-dialog>
+    <q-dialog v-model="newTankPopup"><NewTankDialog :car="car" /></q-dialog>
     <div class="text-center q-my-md">
       <q-btn
         outline

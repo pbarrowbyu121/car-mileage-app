@@ -14,5 +14,4 @@ export const GET_CARS_MUTATION = (state, cars) => {
 export const GET_TANKS_MUTATION = (state, tanks) => {
   // console.log("get tanks mutation")
   state.tanks = tanks
-  // state.username = 'Brian'
 }

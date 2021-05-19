@@ -23,7 +23,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer
+    <!-- <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
       bordered
@@ -39,7 +39,7 @@
           v-bind="link"
         />
       </q-list>
-    </q-drawer>
+    </q-drawer> -->
 
     <q-page-container>
       <router-view />
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import MenuLink from "components/MenuLink.vue";
+// import MenuLink from "components/MenuLink.vue";
 
 const linksData = [
   {
@@ -60,22 +60,12 @@ const linksData = [
 
 export default {
   name: "MainLayout",
-  components: { MenuLink },
+  // components: { MenuLink },
   data() {
     return {
       leftDrawerOpen: false,
       essentialLinks: linksData
     };
   },
-  computed: {
-    username: {
-      get() {
-        return this.$store.state.carstore.username;
-      },
-      set(val) {
-        this.$store.state.commit("carstore/UPDATE_USERNAME_MUTATION", val);
-      }
-    }
-  }
 };
 </script>
