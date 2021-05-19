@@ -1,10 +1,9 @@
+import axios from "axios"
+
 /*
 export function someAction (context) {
 }
 */
-export function changeName ({}, payload) {
-    // console.log("Action called", payload)
-}
 
 // POST requests
 export function addCarAction({ commit }, payload) {
@@ -20,18 +19,35 @@ export function addCarAction({ commit }, payload) {
   })
 }
 
+// axios post request
 export function addTankAction ({}, payload) {
-  fetch("http://localhost:5000/tanks", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json"
-    },
-    body: JSON.stringify(payload)
-  })
-  .then((res) => {
-    console.log("response from addTank POST", res)
-  })
+  axios.post("http://localhost:5000/tanks", payload)
+  .then(response => console.log("shorthand axios POST", response))
 }
+
+// axios post request longhand
+// export function addTankAction({}, payload) {
+//   axios({
+//     method: 'post',
+//     url: "http://localhost:5000/tanks",
+//     data: payload
+//   })
+//   .then(response => console.log("longhand axios POST", response))
+// }
+
+// longhand fetch API post request
+// export function addTankAction ({}, payload) {
+//   fetch("http://localhost:5000/tanks", {
+//     method: "POST",
+//     headers: {
+//       "Content-type": "application/json"
+//     },
+//     body: JSON.stringify(payload)
+//   })
+//   .then((res) => {
+//     console.log("response from addTank POST", res)
+//   })
+// }
 
 // GET requests
 export function getCarsAction({ commit }) {
