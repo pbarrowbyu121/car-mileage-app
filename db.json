@@ -1,49 +1,25 @@
 {
   "cars": [
     {
-      "id": "ce8b742a-aaaa-4a72-9262-0f331f1dee17",
-      "year": 2011,
+      "id": "0875d0c6-0b5b-468b-a138-9a0bbf6fb55c",
+      "year": 2002,
       "make": "HONDA",
-      "model": "Civic",
+      "model": "Accord",
       "color": "Silver",
-      "vin": "FAKEVIN456",
-      "license": "Blah1",
-      "name": "Max",
-      "image": "https://lh3.googleusercontent.com/proxy/U5EezDixmiDiTfvNr2bKMFBEEH54oX8QDqUTfQ4Cm3N5eW-Eyqop6oGEwjk_Z9JG9CxFI5_sPZ-HMnq3gOsZrCilwr6EREP7"
+      "vin": "FAKE",
+      "license": "FAKE",
+      "name": "FAKE",
+      "image": "https://lh3.googleusercontent.com/proxy/M_QTxA-sNxeopni7-bTL8VAjV68Je6nOI58KIN7_5Xt_sr6HSM-E-54320fJPR75Vj8m9EOtpW1UhCZHWAoWBMI4_MnB"
     }
   ],
   "tanks": [
     {
-      "id": "7e8aa95a-1e83-4f4f-90db-03d20a706dc2",
-      "vin": "FAKEVIN456",
+      "id": "3fcae468-0e30-427e-92da-24b4903bb0c2",
+      "vin": "FAKE",
       "date": "05/03/2021",
-      "odometer": "110",
-      "gallons": "12",
-      "cost": "35"
-    },
-    {
-      "id": "fada20ea-7882-412e-a8a7-4314f0502bb5",
-      "vin": "FAKEVIN456",
-      "date": "05/04/2021",
-      "odometer": "500",
-      "gallons": "12",
-      "cost": "35"
-    },
-    {
-      "id": "ac301ed5-16e0-4855-a009-f07e78e24034",
-      "vin": "FAKEVIN456",
-      "date": "05/05/2021",
-      "odometer": "700",
-      "gallons": "7",
-      "cost": "25"
-    },
-    {
-      "id": "9321f537-cb37-4ea8-ad09-2315387ce53e",
-      "vin": "FAKEVIN456",
-      "date": "05/06/2021",
-      "odometer": "1000",
-      "gallons": "12",
-      "cost": "35"
+      "odometer": "33",
+      "gallons": "33",
+      "cost": "33"
     }
   ]
 }

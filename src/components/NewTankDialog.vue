@@ -27,7 +27,7 @@
                   today-btn
                   mask="MM/DD/YYYY"
                 >
-                  <div class="row items-center justify-end">
+                  <div class="items-center justify-end row">
                     <q-btn v-close-popup label="OK" color="primary" flat />
                   </div>
                 </q-date>
@@ -76,7 +76,6 @@
 <script>
 import { uid } from "quasar";
 import { mapActions } from "vuex";
-import axios from "axios";
 
 export default {
   name: "NewTankDialog",
@@ -92,7 +91,7 @@ export default {
   props: ["car"],
   methods: {
     ...mapActions("carstore", ["getTanksAction", "addTankAction"]),
-    async onSubmit() {
+    onSubmit() {
       let newTankObj = {
         id: uid(),
         vin: this.car.vin,
@@ -101,8 +100,8 @@ export default {
         gallons: this.gallons,
         cost: this.cost
       };
-      await this.addTankAction(newTankObj)
-      await this.getTanksAction()
+      this.addTankAction(newTankObj).then(response => this.getTanksAction())
+      // this.getTanksAction()
     },
     onReset() {
       // resets the form, clears state

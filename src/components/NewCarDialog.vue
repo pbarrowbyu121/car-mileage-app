@@ -135,7 +135,7 @@ export default {
         this.modelOptions = this.modelOptionsAll.filter(v => v.toLowerCase().indexOf(needle) > -1)
       })
     },
-    async onSubmit() {
+    onSubmit() {
       let newCarObj = {
         id: uid(),
         year: this.year,
@@ -147,8 +147,7 @@ export default {
         name: this.name,
         image: this.image
       };
-      await this.addCarAction(newCarObj)
-      await this.getCarsAction()
+      this.addCarAction(newCarObj).then(response => this.getCarsAction())
     },
     onReset() {
       // resets the form, clears state
@@ -163,19 +162,19 @@ export default {
     },
 
     // axios version of get request for makes
-    async getCarMakes() {
+    getCarMakes() {
       this.loading = true
-      await axios.get(`https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`)
+      axios.get(`https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`)
       .then(response => {
         console.log("external GET makes", response)
         this.makeOptionsAll = response.data.Results.map(result => result.Make_Name).sort()
+        this.loading = false
       })
-      this.loading = false
     },
 
-    async getCarModels() {
+    getCarModels() {
       this.loading = true
-      await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${this.make.toLowerCase()}?format=json`, {
+      fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${this.make.toLowerCase()}?format=json`, {
         method: "GET",
       })
       .then(res => {
@@ -184,8 +183,8 @@ export default {
       .then(res => {
         console.log("external GET models", res)
         this.modelOptionsAll = res.Results.map(result => result.Model_Name).sort()
+        this.loading = false
       })
-      this.loading = false
     },
   },
 };

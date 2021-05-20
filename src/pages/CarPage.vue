@@ -1,7 +1,7 @@
 <template>
   <div v-if="car">
     <q-img :src="car.image">
-      <div class="absolute-bottom text-subtitle1 text-center">
+      <div class="text-center absolute-bottom text-subtitle1">
         "{{ car.name }}"
       </div>
     </q-img>
@@ -88,14 +88,14 @@ export default {
     addTankDialogToggle() {
       this.newTankPopup = true;
     },
-    async deleteCar() {
+    deleteCar() {
       if(this.tanks) {
         let deleteTanksArr = this.tanks.map(tank => tank.id)
         deleteTanksArr.forEach(id => this.deleteTankAction(id))
       }
-      await this.deleteCarAction(this.car.id)
-      await this.getCarsAction()
-      this.$router.push({ path: '/' })
+      this.deleteCarAction(this.car.id)
+      .then(res => this.getCarsAction())
+      .then(res => this.$router.push({ path: '/' }))
     },
     editCar() {
       this.editCarPopup = true

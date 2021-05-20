@@ -7,60 +7,58 @@ export function someAction (context) {
 
 // POST requests
 export function addCarAction({ commit }, payload) {
-  fetch("http://localhost:5000/cars", {
+  const addCarPromise = fetch("http://localhost:5000/cars", {
     method: "POST",
     headers: {
       "Content-type": "application/json"
     },
     body: JSON.stringify(payload)
   })
-  .then((res) => {
-    console.log("response from addCar POST", res)
-  })
+  console.log("response from addCar POST", addCarPromise)
+  return addCarPromise
 }
 
-// axios post request shorthand
+// axios POST request shorthand
 export function addTankAction ({}, payload) {
-  axios.post("http://localhost:5000/tanks", payload)
-  .then(response => console.log("response from POST tank request", response))
+  const axiosPromise = axios.post("http://localhost:5000/tanks", payload)
+  console.log("axios POST tank", axiosPromise)
+  return axiosPromise
 }
 
 // axios post request longhand
 // export function addTankAction({}, payload) {
-//   axios({
+//   const addTankPromise = axios({
 //     method: 'post',
 //     url: "http://localhost:5000/tanks",
 //     data: payload
 //   })
-//   .then(response => console.log("longhand axios POST", response))
+//   console.log("longhand axios POST", response)
+//   return addTankPromise
 // }
 
 // longhand fetch API post request
 // export function addTankAction ({}, payload) {
-//   fetch("http://localhost:5000/tanks", {
+//   const addTankPromise = fetch("http://localhost:5000/tanks", {
 //     method: "POST",
 //     headers: {
 //       "Content-type": "application/json"
 //     },
 //     body: JSON.stringify(payload)
 //   })
-//   .then((res) => {
-//     console.log("response from addTank POST", res)
-//   })
+//   console.log("response from addTank POST", addTankPromise)
+//   return addTankPromise
 // }
 
 // GET requests
 export function getCarsAction({ commit }) {
   fetch("http://localhost:5000/cars")
-  .then(response => {
-    console.log("response from GET cars", response)
-    return response.json()
+  .then((res) => res.json())
+  .then((res) => {
+    console.log("response from GET cars", res)
+    commit('GET_CARS_MUTATION', res)
   })
-  .then(response => {
-    commit('GET_CARS_MUTATION', response)
-  })
-  .catch(error => {
-    console.log(error)
+  .catch(e => {
+    console.log(e)
   })
 }
 
@@ -74,6 +72,7 @@ export function getTanksAction ({ commit }) {
     })
     .then((res) => {
       commit('GET_TANKS_MUTATION', res)
+      return
     })
     .catch(e => {
       console.log(e)
@@ -82,48 +81,44 @@ export function getTanksAction ({ commit }) {
 
 // PUT requests
 export function editCarAction({}, payload) {
-  fetch(`http://localhost:5000/cars/${payload.id}`, {
+  const editCarPromise = fetch(`http://localhost:5000/cars/${payload.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(payload)
   })
-  .then((res) => {
-    console.log("response from PUT car", res)
-    return res.json()
-  })
+  console.log("response from PUT car", editCarPromise)
+  return editCarPromise
 }
 
 export function editTankAction({}, payload) {
-  fetch(`http://localhost:5000/tanks/${payload.id}`, {
+  const editTankAction = fetch(`http://localhost:5000/tanks/${payload.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(payload)
   })
-  .then((res) => {
-    console.log("response from PUT tank", res)
-    return res.json()
-  })
+  console.log("response from PUT tank", editTankAction)
+  return editTankAction
 }
 
 // DELETE requests
 export function deleteCarAction({}, payload) {
-  fetch(`http://localhost:5000/cars/${payload}`, {
+  const deleteCarPromise = fetch(`http://localhost:5000/cars/${payload}`, {
     method: "DELETE"
   })
-  .then((res) => console.log("response from DELETE car", res))
+  console.log("response from DELETE car", deleteCarPromise)
+  return deleteCarPromise
 }
 
 export function deleteTankAction({}, payload) {
-  fetch(`http://localhost:5000/tanks/${payload}`, {
+  const deleteTankPromise = fetch(`http://localhost:5000/tanks/${payload}`, {
     method: "DELETE",
   })
-  .then((res) => {
-    console.log("response from DELETE tank", res)
-  });
+  console.log("response from DELETE tank", deleteTankPromise)
+  return deleteTankPromise
 }
 
 

@@ -50,14 +50,12 @@ export default {
       ],
       editTankPopup: false,
       tankToEdit: null
-      // data: this.tanks
     };
   },
   methods: {
     ...mapActions("carstore", ["deleteTankAction", "getTanksAction", "editTankAction"]),
-    async onDelete(id) {
-      await this.deleteTankAction(id)
-      this.getTanksAction()
+    onDelete(id) {
+      this.deleteTankAction(id).then(res => this.getTanksAction())
     },
     editTank(tank) {
       this.editTankPopup = true

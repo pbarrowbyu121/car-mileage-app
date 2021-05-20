@@ -27,7 +27,7 @@
                   today-btn
                   mask="MM/DD/YYYY"
                 >
-                  <div class="row items-center justify-end">
+                  <div class="items-center justify-end row">
                     <q-btn v-close-popup label="OK" color="primary" flat />
                   </div>
                 </q-date>
@@ -84,7 +84,7 @@ export default {
   },
   methods: {
     ...mapActions("carstore", ["getTanksAction", "editTankAction"]),
-    async onSubmit() {
+    onSubmit() {
       let editedTankObj = {
         ...this.tank,
         cost: this.editTankCost,
@@ -92,8 +92,7 @@ export default {
         gallons: this.editTankGallons,
         odometer: this.editTankOdometer
       }
-      await this.editTankAction(editedTankObj)
-      await this.getTanksAction()
+      this.editTankAction(editedTankObj).then(res => this.getTanksAction())
     }
   }
 };

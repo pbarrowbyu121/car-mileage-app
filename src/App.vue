@@ -11,7 +11,7 @@ export default {
   methods: {
     ...mapActions("carstore", ["getTanksAction", "getCarsAction"]),
   },
-  created() {
+created() {
     this.getCarsAction()
     this.getTanksAction()
   }
