@@ -42,7 +42,7 @@ export default {
           name: "cost",
           label: "Cost",
           field: "cost",
-          format: val => `${val}`
+          format: val => '$' + `${val}`
         },
         {
           name: "actions", label: "Actions", field: '', align: 'center'

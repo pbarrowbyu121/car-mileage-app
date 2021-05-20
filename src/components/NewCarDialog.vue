@@ -1,5 +1,5 @@
 <template>
-  <q-card class="my-card text-permanent-marker">
+  <q-card class="my-card text-permanent-marker text-krona-one">
     <q-card-section>
       <div class="text-h6">Add New Car</div>
     </q-card-section>

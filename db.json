@@ -10,6 +10,28 @@
       "license": "FAKE",
       "name": "FAKE",
       "image": "https://lh3.googleusercontent.com/proxy/M_QTxA-sNxeopni7-bTL8VAjV68Je6nOI58KIN7_5Xt_sr6HSM-E-54320fJPR75Vj8m9EOtpW1UhCZHWAoWBMI4_MnB"
+    },
+    {
+      "id": "06daf450-9bee-4ac1-a12a-807b18351857",
+      "year": 2010,
+      "make": "HONDA",
+      "model": "Civic",
+      "color": "Silver",
+      "vin": "FAKEVINHGH",
+      "license": "ZXY",
+      "name": "MAX",
+      "image": "https://www.cstatic-images.com/car-pictures/maxWidth900/cac00hoc023f0112.png"
+    },
+    {
+      "id": "017258c4-7979-4b2f-a53d-95f42632c5ab",
+      "year": 2021,
+      "make": "TESLA",
+      "model": "Roadster",
+      "color": "Red",
+      "vin": "TESLAVIN1234",
+      "license": "DOGE",
+      "name": "Elon",
+      "image": "https://i.ytimg.com/vi/sgliNnCmQL0/maxresdefault.jpg"
     }
   ],
   "tanks": [
@@ -20,6 +42,46 @@
       "odometer": "33",
       "gallons": "33",
       "cost": "33"
+    },
+    {
+      "id": "eb075146-9039-4b2b-b1fe-ab48543d3852",
+      "vin": "FAKEVINHGH",
+      "date": "05/03/2021",
+      "odometer": "111",
+      "gallons": "111",
+      "cost": "111"
+    },
+    {
+      "id": "3f1a9341-b16c-4ad1-a505-687748ca65c0",
+      "vin": "FAKEVINHGH",
+      "date": "05/04/2021",
+      "odometer": "222",
+      "gallons": "33",
+      "cost": "22"
+    },
+    {
+      "id": "7750bf51-4c1b-4b3e-9b59-5ae0c8e672a9",
+      "vin": "TESLAVIN1234",
+      "date": "05/03/2021",
+      "odometer": "300",
+      "gallons": "14",
+      "cost": "35"
+    },
+    {
+      "id": "ac19f417-49c4-4f2e-922e-4495c3a47772",
+      "vin": "TESLAVIN1234",
+      "date": "05/04/2021",
+      "odometer": "600",
+      "gallons": "13",
+      "cost": "34"
+    },
+    {
+      "id": "0ba3c38b-c445-4c3d-ae17-a13c50a0cc87",
+      "vin": "TESLAVIN1234",
+      "date": "05/07/2021",
+      "odometer": "1000",
+      "gallons": "12",
+      "cost": "35.56"
     }
   ]
 }

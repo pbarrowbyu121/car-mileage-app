@@ -1,5 +1,5 @@
 <template>
-  <q-card class="my-card text-permanent-marker">
+  <q-card class="my-card text-permanent-marker text-krona-one">
     <q-card-section>
       <div class="text-h6">Edit {{tank.date}} Tank</div>
     </q-card-section>

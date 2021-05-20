@@ -10,12 +10,18 @@ export function sortTanks(tanks, order) {
 
 export function calcMPG(tanks) {
     if(tanks.length > 1) {
-        let sortedTanks = sortTanks(tanks, 'asc')
+        let sortedTanks = sortTanks(tanks, 'desc')
+        console.log("sortedTanks", sortedTanks)
         let gallons = 0
-        let miles = parseInt(tanks[tanks.length - 1].odometer) - parseInt(tanks[0].odometer)
+        // let miles = parseInt(tanks[tanks.length - 1].odometer) - parseInt(tanks[0].odometer)
+        let miles = sortedTanks[0].odometer
         let mpg = 0
-        tanks.forEach(tank => gallons = gallons+parseFloat(tank.gallons))
-        gallons = gallons - tanks[0].gallons
+        sortedTanks.forEach(tank => {
+            gallons = gallons+parseFloat(tank.gallons)
+        })
+        // gallons = gallons - tanks[0].gallons
+        console.log("miles", miles)
+        console.log("gallons", gallons)
         mpg = (miles / gallons).toFixed(1)
         return mpg
     }

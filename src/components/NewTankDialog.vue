@@ -1,5 +1,5 @@
 <template>
-  <q-card class="my-card text-permanent-marker">
+  <q-card class="my-card text-permanent-marker text-krona-one">
     <q-card-section>
       <div class="text-h6">Fillup for {{ car.year }} {{ car.make }} {{ car.model }}, {{ car.color }}</div>
     </q-card-section>
