@@ -1,10 +1,5 @@
 import axios from "axios"
 
-/*
-export function someAction (context) {
-}
-*/
-
 // POST requests
 export function addCarAction({ commit }, payload) {
   const addCarPromise = fetch("http://localhost:5000/cars", {
@@ -24,30 +19,6 @@ export function addTankAction ({}, payload) {
   console.log("axios POST tank", axiosPromise)
   return axiosPromise
 }
-
-// axios post request longhand
-// export function addTankAction({}, payload) {
-//   const addTankPromise = axios({
-//     method: 'post',
-//     url: "http://localhost:5000/tanks",
-//     data: payload
-//   })
-//   console.log("longhand axios POST", response)
-//   return addTankPromise
-// }
-
-// longhand fetch API post request
-// export function addTankAction ({}, payload) {
-//   const addTankPromise = fetch("http://localhost:5000/tanks", {
-//     method: "POST",
-//     headers: {
-//       "Content-type": "application/json"
-//     },
-//     body: JSON.stringify(payload)
-//   })
-//   console.log("response from addTank POST", addTankPromise)
-//   return addTankPromise
-// }
 
 // GET requests
 export function getCarsAction({ commit }) {
